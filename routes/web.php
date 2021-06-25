@@ -23,6 +23,8 @@ Route::get('/transaction', [\App\Http\Controllers\TransactionController::class, 
 Route::get('/userList', [UserController::class, 'index']);
 Route::get('/user/profile/{id}', [UserController::class, 'show']);
 Route::get('/user/changeStatus/{id}/{status}', [UserController::class, 'changeStatus']);
+Route::view('/addManager', 'manager.create');
+Route::post('/addManager', [UserController::class, 'addManager']);
 
 Route::get('/login', 'loginController@index');
 Route::post('/login', 'loginController@verification');
