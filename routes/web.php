@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,7 @@ Route::get('/', function () {
 
 Route::view('/user/admin/index', 'user.admin.index');
 Route::get('/transaction', [\App\Http\Controllers\TransactionController::class, 'index']);
+Route::get('/userList', [UserController::class, 'index']);
+Route::get('/user/profile/{id}', [UserController::class, 'show']);
+Route::get('/user/changeStatus/{id}/{status}', [UserController::class, 'changeStatus']);
+
