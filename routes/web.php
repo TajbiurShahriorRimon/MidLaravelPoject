@@ -50,7 +50,7 @@ Route::group(['middleware'=>['sess']], function(){
     Route::get('/editProfile', 'orgEditProfile@index');
     Route::post('/editProfile', 'orgEditProfile@update');
 
-
+    
 
     Route::get('/org/logout', 'orgLogout@index');
 });
