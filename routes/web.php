@@ -13,9 +13,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::view('/user/admin/index', 'user.admin.index');
-Route::get('/transaction', [\App\Http\Controllers\TransactionController::class, 'index']);
+Route::get('/login', 'loginController@index');
+Route::post('/login', 'loginController@verification');
+
+Route::get('/org/forgotPass', 'orgForgotPass@index');
+Route::post('/org/forgotPass', 'orgForgotPass@change');
+
+
+
+Route::get('/signup', 'orgSignup@index');
+Route::post('/signup', 'orgSignup@insert');
+
+
+
+Route::group(['middleware'=>['sess']], function(){
+
+    Route::get('/create', 'orgCreateController@index');
+
+    Route::get('/org_dashboard', 'orgDashboardController@index');
+    Route::get('/org/mycampaign', 'orgMycampaign@index');
+    Route::get('/campaignDetails', 'orgCampaignDetails@index');
+    Route::get('/transaction', 'orgCampaignTran@index');
+
+    Route::get('/details', 'orgDetails@index')->name('org.details');
+    Route::get('/editProfile', 'orgEditProfile@index');
+    Route::post('/editProfile', 'orgEditProfile@update');
+
+    
+
+    Route::get('/org/logout', 'orgLogout@index');
+});
