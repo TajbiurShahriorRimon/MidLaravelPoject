@@ -9,6 +9,7 @@
 </head>
 <body>
 <a href="/transaction">Transaction</a><br>
-<a href="/userList">User List</a>
+<a href="/userList">User List</a><br>
+<a href="/addManager">Add Manager</a>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ManagerRequest;
 use App\Models\User;
 use App\Models\Users;
 use Illuminate\Http\Request;
@@ -101,5 +102,11 @@ class UserController extends Controller
             DB::update('update users set status = 1 where userId = ?', [$id]);
             return redirect('/user/profile/'.$id);
         }
+    }
+
+    public function addManager(ManagerRequest $request){
+        DB::insert("INSERT INTO users (userName, email, password, status, type)
+                            VALUES ('$request->name', '$request->email', '$request->password', '1', 'manager')");
+        return redirect('/userList')->with('message', "Manager Account Created Successfully");
     }
 }

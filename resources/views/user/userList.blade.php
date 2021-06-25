@@ -12,24 +12,32 @@
     <title>User List</title>
 </head>
 <body>
+{{--Following line, If a manager account is create then in the user list
+this messange will be show. Howerver if only this page is request by not createing
+a manager account then the message will not be show--}}
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
     <div class="container">
         <table class="table">
             <thead>
             <tr>
-                <td>User Name</td>
-                <td>Email</td>
-                <td>Type</td>
-                <td></td>
+                <td align="center">User Name</td>
+                <td align="center">Email</td>
+                <td align="center">Type</td>
+                <td align="center"></td>
             </tr>
             </thead>
 
             <tbody>
             @foreach($result as $user)
                 <tr style="background-color: #a0aec0">
-                    <td>{{$user['userName']}}</td>
-                    <td>{{$user['email']}}</td>
-                    <td>{{$user['type']}}</td>
-                    <td><a href="/user/profile/{{$user['userId']}}" class="btn btn-success">Check Profile</a></td>
+                    <td align="center">{{$user['userName']}}</td>
+                    <td align="center">{{$user['email']}}</td>
+                    <td align="center">{{$user['type']}}</td>
+                    <td align="center"><a href="/user/profile/{{$user['userId']}}" class="btn btn-success">Check Profile</a></td>
                 </tr>
             @endforeach
             </tbody>
