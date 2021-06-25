@@ -18,14 +18,12 @@ use \App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 
-<<<<<<< HEAD
 Route::view('/user/admin/index', 'user.admin.index');
 Route::get('/transaction', [\App\Http\Controllers\TransactionController::class, 'index']);
 Route::get('/userList', [UserController::class, 'index']);
 Route::get('/user/profile/{id}', [UserController::class, 'show']);
 Route::get('/user/changeStatus/{id}/{status}', [UserController::class, 'changeStatus']);
 
-=======
 Route::get('/login', 'loginController@index');
 Route::post('/login', 'loginController@verification');
 
@@ -52,8 +50,7 @@ Route::group(['middleware'=>['sess']], function(){
     Route::get('/editProfile', 'orgEditProfile@index');
     Route::post('/editProfile', 'orgEditProfile@update');
 
-    
+
 
     Route::get('/org/logout', 'orgLogout@index');
 });
->>>>>>> main
