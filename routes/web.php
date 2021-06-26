@@ -32,6 +32,7 @@ Route::get('/donorList', [DonationController::class, 'donorList']);
 Route::get('/topDonor', [DonationController::class, 'topDonor']);
 Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
 Route::get('/nonOrganizerList', [OrganizerController::class, 'nonOrganizerList']);
+Route::get('/topOrganizer', [OrganizerController::class, 'topOrganizerDetails']);
 
 
 Route::get('/login', 'loginController@index');

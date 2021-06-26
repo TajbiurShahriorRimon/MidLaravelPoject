@@ -26,6 +26,17 @@ class OrganizerController extends Controller
         return view('organizer.nonOrganizerList')->with('users', $data);
     }
 
+    public function topOrganizerDetails(){
+        $result = DB::select("SELECT SUM(raisedAmount) as raisedAmount, users.userId, userName, email, type, users.status
+                                    FROM events, users
+                                    WHERE users.userId = events.userId
+                                    AND events.status = 0
+                                    GROUP BY userId ORDER BY SUM(raisedAmount) DESC LIMIT 1");
+
+        $data = json_decode(json_encode($result), true);
+        return view('organizer.topOrganizerDetails')->with('users', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
