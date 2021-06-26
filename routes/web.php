@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\DonationController;
+use \App\Http\Controllers\OrganizerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::post('/addManager', [UserController::class, 'addManager']);
 Route::get('/donationReport/yearly', [DonationController::class, 'index']);
 Route::get('/donorList', [DonationController::class, 'donorList']);
 Route::get('/topDonor', [DonationController::class, 'topDonor']);
+Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
+Route::get('/nonOrganizerList', [OrganizerController::class, 'nonOrganizerList']);
 
 
 Route::get('/login', 'loginController@index');

@@ -14,6 +14,7 @@
 <body>
     <div align="center">
         <a href="/topDonor"><strong>Top Donor Details</strong></a>
+        <a href="/nonDonorList">Non Donor List</a>
         <h2>Donor List</h2>
     </div>
     <br>
