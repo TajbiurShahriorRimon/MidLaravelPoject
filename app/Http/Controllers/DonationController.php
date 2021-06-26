@@ -46,6 +46,27 @@ class DonationController extends Controller
         return view('donation.monthlyDonation')->with('data', $chart);
     }
 
+    function donorList(){
+        $result = DB::select("SELECT SUM(Amount) as totalAmount, users.userId, users.userName, users.email
+                                    FROM eventdonations, users
+                                    WHERE users.userId = eventdonations.userId
+                                    GROUP BY userId");
+
+        $data = json_decode(json_encode($result), true);
+        return view('donor.donorList')->with('data', $data);
+    }
+
+    function topDonor(){
+        $result = DB::select("SELECT SUM(Amount) as totalAmount, users.userId, userName, email, type, status
+                                    FROM eventdonations, users
+                                    WHERE users.userId = eventdonations.userId GROUP BY userId
+                                    ORDER BY SUM(Amount) DESC LIMIT 1");
+
+        $data = json_decode(json_encode($result), true);
+        //print_r($result);
+        return view('donor.topDonorDetails')->with('users', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
