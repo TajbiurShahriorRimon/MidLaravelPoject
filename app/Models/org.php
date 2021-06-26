@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class org extends Model
 {
-    protected $table = 'users';
-    protected $primaryKey = 'userId';
-    //use HasFactory;
+    protected $table = 'org';
+    protected $primaryKey = 'id';
+    public $timestamps = false;
 }
