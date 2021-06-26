@@ -32,14 +32,14 @@ class orgEditProfile extends Controller
             $img->move('orgPic',date('d-m-Y-H-i').'.'.$img->getClientOriginalExtension());
             $picLocation='orgPic/'.date('d-m-Y-H-i').'.'.$img->getClientOriginalExtension();
 
-            $id=$req->session()->get('id');
+            $id=$req->session()->get('id1');
             $org=org::find($id);
             $org->image=$picLocation;
             $org->save();
         }
         
 
-        $id=$req->session()->get('id');
+        $id=$req->session()->get('id1');
         $org=org::find($id);
 
         $org->name=$name;
