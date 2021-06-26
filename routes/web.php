@@ -47,9 +47,13 @@ Route::post('/signup', 'orgSignup@insert');
 Route::group(['middleware'=>['sess']], function(){
 
     Route::get('/create', 'orgCreateController@index');
+    Route::post('/create', 'orgCreateController@add');
 
     Route::get('/org_dashboard', 'orgDashboardController@index');
+
     Route::get('/org/mycampaign', 'orgMycampaign@index');
+    Route::get('/org/delete/{eId}', 'orgMycampaign@delete');
+    
     Route::get('/campaignDetails', 'orgCampaignDetails@index');
     Route::get('/transaction', 'orgCampaignTran@index');
 

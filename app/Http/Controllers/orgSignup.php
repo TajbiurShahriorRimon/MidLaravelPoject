@@ -27,7 +27,6 @@ class orgSignup extends Controller
         $org->image='asset/man.png';
         $org->save();
         
-
         $users = new org_users();
         $users->userName = $req->name;
         $users->email = $req->mail;
@@ -36,7 +35,6 @@ class orgSignup extends Controller
         $users->type = 'organizer';
         $users->save();
         
-
         return redirect('/login');
     }
 

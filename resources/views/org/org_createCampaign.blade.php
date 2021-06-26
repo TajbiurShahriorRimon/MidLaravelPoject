@@ -23,7 +23,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" name="" id="">
+                            <input type="text" name="title" id="">
+                            <div class="error-msg">@error('title'){{$message}}@enderror</div>
                         </td>
                     </tr>
                     <tr>
@@ -33,7 +34,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="date" name="" id="">
+                            <input type="date" name="sDate" id="">
+                            <div class="error-msg">@error('sDate'){{$message}}@enderror</div>
                         </td>
                     </tr>
                     <tr>
@@ -43,7 +45,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="date"  name="" id="">
+                            <input type="date"  name="eDate" id="">
+                            <div class="error-msg">@error('eDate'){{$message}}@enderror</div>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +56,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="tel" name="" id="">
+                            <input type="tel" name="rg" id="">
+                            <div class="error-msg">@error('rg'){{$message}}@enderror</div>
                         </td>
                     </tr>
                     <tr>
@@ -63,7 +67,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" name="" id="">
+                            <input type="text" name="desc" id="">
+                            <div class="error-msg">@error('desc'){{$message}}@enderror</div>
                         </td>
                     </tr>
                     <tr>
@@ -73,7 +78,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="file" name="" id="">
+                            <input type="file" name="img" id="">
                         </td>
                     </tr>
                     <tr>

@@ -44,3 +44,12 @@ input[type=submit]:hover{
     color: #5231BC;
     background-color: white;
 }
+
+.error-msg{
+    font-family: sans-serif;
+    font-size: 10pt;
+    text-align: right;
+    
+    color: red;
+    font-weight: bold;
+}
