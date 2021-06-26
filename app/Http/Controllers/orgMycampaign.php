@@ -44,6 +44,7 @@ class orgMycampaign extends Controller
             // $res=orgCampaign::where('eventId',$eventId)->delete();
             $orgC=orgCampaign::find($eventId);
             $orgC->status=0;
-            return redirect('/org/logout');
+            $orgC->save();
+            return redirect('/org_dashboard');
     }
 }
