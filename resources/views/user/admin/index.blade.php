@@ -12,5 +12,6 @@
 <a href="/userList">User List</a><br>
 <a href="/addManager">Add Manager</a> <br>
 <a href="/donationReport/yearly">Donation Report</a> <br>
+<a href="/donorList">Donor List</a> <br>
 </body>
 </html>

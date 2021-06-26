@@ -18,7 +18,7 @@
         <tr>
             <td align="center"><strong>Year</strong></td>
             <td align="center"><strong>Total Amount</strong></td>
-            <td align="left"></td>
+            {{--<td align="left"></td>--}}
         </tr>
         </thead>
 
@@ -27,9 +27,9 @@
             <tr style="background-color: #d3d8e2">
                 <td align="center">{{$data['date']}}</td>
                 <td align="center">{{$data['totalAmount']}}</td>
-                <td align="left">
+                {{--<td align="left">
                     <a href="/donationReport/monthly/{{$data['date']}}" class="btn btn-danger">Monthly Report</a>
-                </td>
+                </td>--}}
             </tr>
         @endforeach
         </tbody>

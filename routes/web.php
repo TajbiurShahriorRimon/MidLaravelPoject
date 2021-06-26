@@ -27,7 +27,8 @@ Route::get('/user/changeStatus/{id}/{status}', [UserController::class, 'changeSt
 Route::view('/addManager', 'manager.create');
 Route::post('/addManager', [UserController::class, 'addManager']);
 Route::get('/donationReport/yearly', [DonationController::class, 'index']);
-Route::get('/donationReport/monthly/{month}', [DonationController::class, 'monthlyDonationReport']);
+Route::get('/donorList', [DonationController::class, 'donorList']);
+Route::get('/topDonor', [DonationController::class, 'topDonor']);
 
 
 Route::get('/login', 'loginController@index');
