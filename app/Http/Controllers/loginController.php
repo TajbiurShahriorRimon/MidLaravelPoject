@@ -27,7 +27,7 @@ class loginController extends Controller
         
         if (count($data)>0 || count($data2)>0) {
             $type=$data2[0]->type;
-            if ($type=='organizer') {
+            if ($type=='user') {
                 $req->session()->put('id1', $data[0]->id);
                 $req->session()->put('id2', $data2[0]->userId);
                 $req->session()->put('name', $data[0]->name);

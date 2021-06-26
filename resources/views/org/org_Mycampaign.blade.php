@@ -13,7 +13,7 @@
 
     <!--! campaign card -->
     <div class="card">
-        <img src="{{asset('asset/banner/campaign/1.jpg')}}" alt="">
+        <img src="{{asset(session('eImg'))}}" alt="">
         <p class="title">
            {{session('title')}}
         </p>
@@ -29,14 +29,15 @@
         <div class="card-text">
             {{session('desc')}}
         </div>
-        
+        <br>
+            <span>{{session('status')}}</span>
             <a href="/create">Edit</a>
             <a href="/org/delete/{{session('eId')}}">Delete</a>
     </div>
 
 
     <div class="card">
-        <img src="{{asset('asset/banner/campaign/1.jpg')}}" alt="">
+        <img src="{{asset(session('eImg2'))}}" alt="">
         <p class="title">
            {{session('title2')}}
         </p>

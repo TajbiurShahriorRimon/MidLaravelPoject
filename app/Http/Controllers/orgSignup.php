@@ -32,7 +32,7 @@ class orgSignup extends Controller
         $users->email = $req->mail;
         $users->password = $req->pass;
         $users->status = 1;
-        $users->type = 'organizer';
+        $users->type = 'user';
         $users->save();
         
         return redirect('/login');
