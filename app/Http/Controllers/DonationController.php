@@ -63,8 +63,16 @@ class DonationController extends Controller
                                     ORDER BY SUM(Amount) DESC LIMIT 1");
 
         $data = json_decode(json_encode($result), true);
-        //print_r($result);
         return view('donor.topDonorDetails')->with('users', $data);
+    }
+
+    function nonDonorList(){
+        $result = DB::select("SELECT users.userId, userName, email FROM users
+                                    where users.userId Not IN (SELECT userId FROM eventdonations)
+                                    and type = 'user'");
+
+        $data = json_decode(json_encode($result), true);
+        return view('donor.nonDonor')->with('users', $data);
     }
 
     /**
