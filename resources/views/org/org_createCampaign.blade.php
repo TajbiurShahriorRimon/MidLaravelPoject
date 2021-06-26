@@ -14,7 +14,7 @@
     
     <div class="create">
         <center>
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <table>
                     <tr>
                         <td class="td">

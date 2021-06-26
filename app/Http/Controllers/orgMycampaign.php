@@ -21,7 +21,16 @@ class orgMycampaign extends Controller
             $req->session()->put('desc', $data[0]->description);
             $req->session()->put('rg', $data[0]->targetAmount);
             $req->session()->put('raised', $data[0]->raisedAmount);
-            
+            $req->session()->put('eImg', $data[0]->image);
+            if ($data[0]->status==-1) {
+                $req->session()->put('status', 'Not Approved');
+            }
+            if ($data[0]->status==1) {
+                $req->session()->put('status', 'Active');
+            }
+            if ($data[0]->status==0) {
+                $req->session()->put('status', 'Event is finished');
+            }
             if(!empty($data[1])){
                 $req->session()->put('eId2', $data[1]->eventId);
                 $req->session()->put('title2', $data[1]->title);
@@ -30,6 +39,8 @@ class orgMycampaign extends Controller
                 $req->session()->put('desc2', $data[1]->description);
                 $req->session()->put('rg2', $data[1]->targetAmount);
                 $req->session()->put('raised2', $data[1]->raisedAmount);
+                $req->session()->put('eImg2', $data[1]->image);
+                $req->session()->put('status2', $data[1]->status);
             }
 
             return view('org.org_Mycampaign');
