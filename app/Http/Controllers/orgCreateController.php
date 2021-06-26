@@ -20,6 +20,7 @@ class orgCreateController extends Controller
         $orgCampaign->endDate = $req->eDate;
         $orgCampaign->targetAmount = $req->rg;
         $orgCampaign->description = $req->desc;
+        $orgCampaign->status = 1;
         $orgCampaign->userID =  $req->session()->get('id2');
         $orgCampaign->save();
 
