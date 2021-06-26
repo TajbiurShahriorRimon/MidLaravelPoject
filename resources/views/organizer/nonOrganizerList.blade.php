@@ -12,6 +12,10 @@
     <title>Non Donors</title>
 </head>
 <body>
+<div align="center">
+    <a href="/topOrganizer"><strong>Top Organizer Details</strong></a>
+    <h2>Non Donor List</h2>
+</div>
 <div class="container">
     <table class="table">
         <thead>
