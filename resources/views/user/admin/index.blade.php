@@ -10,6 +10,7 @@
 <body>
 <a href="/transaction">Transaction</a><br>
 <a href="/userList">User List</a><br>
-<a href="/addManager">Add Manager</a>
+<a href="/addManager">Add Manager</a> <br>
+<a href="/donationReport/yearly">Donation Report</a> <br>
 </body>
 </html>

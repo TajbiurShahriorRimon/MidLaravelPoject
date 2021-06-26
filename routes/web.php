@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\DonationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ Route::get('/user/profile/{id}', [UserController::class, 'show']);
 Route::get('/user/changeStatus/{id}/{status}', [UserController::class, 'changeStatus']);
 Route::view('/addManager', 'manager.create');
 Route::post('/addManager', [UserController::class, 'addManager']);
+Route::get('/donationReport/yearly', [DonationController::class, 'index']);
+Route::get('/donationReport/monthly/{month}', [DonationController::class, 'monthlyDonationReport']);
+
 
 Route::get('/login', 'loginController@index');
 Route::post('/login', 'loginController@verification');
