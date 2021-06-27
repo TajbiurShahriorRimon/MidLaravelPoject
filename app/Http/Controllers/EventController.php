@@ -93,6 +93,40 @@ class EventController extends Controller
         //print_r($adminInfo);
     }
 
+    public function eventBriefDetails($id){
+        $result = DB::select("SELECT Count(DISTINCT userId) as totalDonors, SUM(Amount) as totalRaisedAmount
+                                    FROM eventdonations WHERE eventId = $id");
+
+        $data = json_decode(json_encode($result), true);
+        return view('event.briefReport')->with('events', $data);
+    }
+
+    public function showEventForRemove($id)
+    {
+        $result = DB::select("select * from events where eventId = $id");
+
+        $data = json_decode(json_encode($result), true);
+
+        return view('event.activeEventForRemove')->with('events', $data);
+    }
+
+    public function removeActiveEvent($id)
+    {
+        $result = DB::select("SELECT SUM(Amount) as totalAmount FROM eventdonations WHERE eventId = $id");
+        $data = json_decode(json_encode($result), true);
+        foreach ($data as $amount) {}
+
+        if ($amount['totalAmount'] == null) {
+            $totalRaisedAmount = 0;
+        } else {
+            $totalRaisedAmount = $amount['totalAmount'];
+        }
+
+        DB::update("update events set raisedAmount = $totalRaisedAmount, status = 0 where eventId = $id");
+
+        return redirect('/userHomePage/events')->with('activeEventRemoveMessage', "Event Removed Successfully");
+    }
+
     /**
      * Show the form for creating a new resource.
      *
