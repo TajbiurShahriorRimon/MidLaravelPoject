@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <style>ul {
+    <style>
+        ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
@@ -54,6 +55,7 @@
     <li><a href="/events/eventRequest">Event Request</a></li>
     <li><a href="/organizerList/report">Organizer Report</a></li>
     <li><a href="/nonOrganizerList" style="float: right">Non Organizer</a></li>
+    <li><a href="/admin/notice">Notice</a></li>
 </ul>
 </body>
 </html>
