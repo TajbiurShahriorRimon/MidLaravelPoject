@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\DonationController;
 use \App\Http\Controllers\OrganizerController;
+use \App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,11 @@ Route::get('/topDonor', [DonationController::class, 'topDonor']);
 Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
 Route::get('/nonOrganizerList', [OrganizerController::class, 'nonOrganizerList']);
 Route::get('/topOrganizer', [OrganizerController::class, 'topOrganizerDetails']);
+Route::get('/userHomePage/events', [EventController::class, 'index']);
+Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents']);
+Route::get('/events/eventRequest', [EventController::class, 'eventRequest']);
+Route::get('/eventRequest/approveForm/{id}', [EventController::class, 'approveForm']);
+Route::post('/eventRequest/approveForm/{id}', [EventController::class, 'confirmCreateEvent']);
 
 
 Route::get('/login', 'loginController@index');
@@ -57,7 +63,7 @@ Route::group(['middleware'=>['sess']], function(){
 
     Route::get('/org/mycampaign', 'orgMycampaign@index');
     Route::get('/org/delete/{eId}', 'orgMycampaign@delete');
-    
+
     Route::get('/campaignDetails', 'orgCampaignDetails@index');
     Route::get('/transaction', 'orgCampaignTran@index');
 
