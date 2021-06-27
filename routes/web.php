@@ -41,6 +41,9 @@ Route::get('/eventRequest/approveForm/{id}', [EventController::class, 'approveFo
 Route::post('/eventRequest/approveForm/{id}', [EventController::class, 'confirmCreateEvent']);
 Route::get('/organizerList/report', [OrganizerController::class, 'organizerNumOfEvents']);
 Route::get('/organizerReport/yearly/{id}', [OrganizerController::class, 'organizerYearEventReport']);
+Route::get('/event/smallReport/{id}', [EventController::class, 'eventBriefDetails']);
+Route::get('/event/removeActiveEvent/{id}', [EventController::class, 'showEventForRemove']);
+Route::get('/event/confirmRemoveEvent/{id}', [EventController::class, 'removeActiveEvent']);
 
 
 Route::get('/login', 'loginController@index');
@@ -68,7 +71,7 @@ Route::group(['middleware'=>['sess']], function(){
     Route::get('/org/edit/{eId}', 'orgEditCampaign@index');
     Route::post('/org/edit/{eId}', 'orgEditCampaign@update');
 
-    
+
     Route::get('/campaignDetails', 'orgCampaignDetails@index');
     Route::get('/transaction', 'orgCampaignTran@index');
 

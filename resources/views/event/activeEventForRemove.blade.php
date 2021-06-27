@@ -10,38 +10,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
-
-    <style>
-        body{
-            background-repeat: no-repeat, repeat;
-            background-color: #cccccc;
-        }
-        hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
-        }
-        a:hover {
-            background-color: #04AA6D;
-        }
-    </style>
 </head>
-<body class="w3-container w3-center w3-animate-opacity">
-@include('user.admin.index') <br>
-@include('event.index')
-
-{{--
-@extends('../../event/index')
-
-@section('body')
-@endsection
---}}
-
-@if(session()->has('activeEventRemoveMessage'))
-    <div class="alert alert-success">
-        {{ session()->get('activeEventRemoveMessage') }}
-    </div>
-@endif
-
+<body>
 <div align="center">
     @foreach($events as $event)
         <table align="center">
@@ -68,7 +38,7 @@
             </tr>
             <tr>
                 <td>
-                    <a href="/event/removeActiveEvent/{{$event['eventId']}}" style="color: lightskyblue" class="btn btn-danger">Remove Event</a>
+                    <a href="/event/confirmRemoveEvent/{{$event['eventId']}}" style="color: lightskyblue" class="btn btn-danger">Remove Confirm!</a>
                 </td>
             </tr>
         </table>
@@ -76,6 +46,5 @@
         <br>
     @endforeach
 </div>
-
 </body>
 </html>
