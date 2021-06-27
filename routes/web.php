@@ -39,6 +39,8 @@ Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents
 Route::get('/events/eventRequest', [EventController::class, 'eventRequest']);
 Route::get('/eventRequest/approveForm/{id}', [EventController::class, 'approveForm']);
 Route::post('/eventRequest/approveForm/{id}', [EventController::class, 'confirmCreateEvent']);
+Route::get('/organizerList/report', [OrganizerController::class, 'organizerNumOfEvents']);
+Route::get('/organizerReport/yearly/{id}', [OrganizerController::class, 'organizerYearEventReport']);
 
 
 Route::get('/login', 'loginController@index');

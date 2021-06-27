@@ -52,6 +52,7 @@
     <li><a href="/donationReport/yearly">Donation Report</a></li>
     <li><a href="/donorList">Donor List</a></li>
     <li><a href="/events/eventRequest">Event Request</a></li>
+    <li><a href="/organizerList/report">Organizer Report</a></li>
     <li><a href="/nonOrganizerList" style="float: right">Non Organizer</a></li>
 </ul>
 </body>
