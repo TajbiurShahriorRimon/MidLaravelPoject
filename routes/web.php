@@ -63,7 +63,10 @@ Route::group(['middleware'=>['sess']], function(){
 
     Route::get('/org/mycampaign', 'orgMycampaign@index');
     Route::get('/org/delete/{eId}', 'orgMycampaign@delete');
+    Route::get('/org/edit/{eId}', 'orgEditCampaign@index');
+    Route::post('/org/edit/{eId}', 'orgEditCampaign@update');
 
+    
     Route::get('/campaignDetails', 'orgCampaignDetails@index');
     Route::get('/transaction', 'orgCampaignTran@index');
 
