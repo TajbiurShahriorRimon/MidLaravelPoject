@@ -5,6 +5,7 @@ use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\DonationController;
 use \App\Http\Controllers\OrganizerController;
 use \App\Http\Controllers\EventController;
+use \App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::get('/organizerReport/yearly/{id}', [OrganizerController::class, 'organiz
 Route::get('/event/smallReport/{id}', [EventController::class, 'eventBriefDetails']);
 Route::get('/event/removeActiveEvent/{id}', [EventController::class, 'showEventForRemove']);
 Route::get('/event/confirmRemoveEvent/{id}', [EventController::class, 'removeActiveEvent']);
+Route::get('/admin/notice', [NotificationController::class, 'adminNotification']);
+Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadNotice']);
 
 
 Route::get('/login', 'loginController@index');
