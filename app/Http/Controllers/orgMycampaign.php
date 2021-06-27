@@ -40,7 +40,16 @@ class orgMycampaign extends Controller
                 $req->session()->put('rg2', $data[1]->targetAmount);
                 $req->session()->put('raised2', $data[1]->raisedAmount);
                 $req->session()->put('eImg2', $data[1]->image);
-                $req->session()->put('status2', $data[1]->status);
+                // $req->session()->put('status2', $data[1]->status);
+                if ($data[1]->status==-1) {
+                    $req->session()->put('status2', 'Not Approved');
+                }
+                if ($data[1]->status==1) {
+                    $req->session()->put('status2', 'Active');
+                }
+                if ($data[1]->status==0) {
+                    $req->session()->put('status2', 'Event is finished');
+                }
             }
 
             return view('org.org_Mycampaign');
@@ -58,4 +67,13 @@ class orgMycampaign extends Controller
             $orgC->save();
             return redirect('/org_dashboard');
     }
+
+    public function edit($eventId){
+        echo $eventId;
+        // // $res=orgCampaign::where('eventId',$eventId)->delete();
+        // $orgC=orgCampaign::find($eventId);
+        // $orgC->status=0;
+        // $orgC->save();
+        // return redirect('/org_dashboard');
+}
 }

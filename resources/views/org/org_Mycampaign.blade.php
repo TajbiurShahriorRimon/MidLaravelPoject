@@ -31,7 +31,7 @@
         </div>
         <br>
             <span>{{session('status')}}</span>
-            <a href="/create">Edit</a>
+            <a href="/org/edit/{{session('eId')}}">Edit</a>
             <a href="/org/delete/{{session('eId')}}">Delete</a>
     </div>
 
@@ -53,8 +53,8 @@
         <div class="card-text">
             {{session('desc2')}}
         </div>
-        
-            <a href="/create">Edit</a>
+            <span>{{session('status2')}}</span>
+            <a href="/org/edit/{{session('eId2')}}">Edit</a>
             <a href="/org/delete/{{session('eId2')}}">Delete</a>
     </div>
 
