@@ -24,12 +24,15 @@ class DonationController extends Controller
     }
 
     public function monthlyDonationReport($month){
-        $result = DB::select("SELECT sum(Amount) as totalAmount, Month(date) as date from eventdonations
-                                    where Year(date) = ? GROUP BY month(date)", [$month]);
+        $result = DB::select("SELECT sum(Amount) as totalAmount, Date_Format(date, '%M') as date
+                                    from eventdonations where Year(date) = ? GROUP BY month(date)", [$month]);
+
+        /*$result = DB::select("SELECT sum(Amount) as totalAmount, Month(date) as date from eventdonations
+                                    where Year(date) = ? GROUP BY month(date)", [$month]);*/
 
         $data = json_decode(json_encode($result), true);
 
-        $chart = array();
+        /*$chart = array();
         $count = count($data);
 
         $months = array( "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec" );
@@ -41,9 +44,9 @@ class DonationController extends Controller
 
         for ($i = 0; $i < $count; $i++){
             $chart[$data[$i]['date'] - 1] = $data[$i]['totalAmount'];
-        }
+        }*/
         //print_r($chart);
-        return view('donation.monthlyDonation')->with('data', $chart);
+        return view('donation.monthlyDonation')->with('row', $data);
     }
 
     function donorList(){

@@ -12,6 +12,7 @@
     <title>Notices</title>
 </head>
 <body>
+@include('user.admin.index') <br>
 <div align="center">
     @foreach($notices as $notice)
         <table align="center">

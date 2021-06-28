@@ -47,6 +47,7 @@
 <body>
 <ul>
     @yield('navBar')
+    <li><a href="/userHomePage/events">Home</a></li>
     <li><a href="/transactions">Transaction</a></li>
     <li><a href="/userList">User List</a></li>
     <li><a href="/addManager">Add Manager</a></li>

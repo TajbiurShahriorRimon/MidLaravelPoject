@@ -12,6 +12,7 @@
     <title>Document</title>
 </head>
 <body>
+@include('user.admin.index') <br>
 <div align="center">
     @foreach($events as $event)
         <table align="center">

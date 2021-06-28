@@ -10,8 +10,11 @@
     <title>Campaign Details</title>
 </head>
 <body>
-
+    @if(session('type') == 'admin')
+        @include('user.admin.index') <br>
+    @else
     @include('org.navbar')
+    @endif
 
     <div class="container">
         <img src="/{{$data->image}}" alt="event_image">
@@ -25,21 +28,23 @@
             Campaign End : {{$data->endDate}}
         </p>
         <div class="text">
-            {{$data->description}} 
+            {{$data->description}}
         </div>
-
+        @if(session('type') != 'admin')
         <div class="button">
             <a href="/transaction">Donate</a>
         </div>
+        @endif
     </div>
 
-
+    @if(session('type') != 'admin')
     <div class="comment">
         <form method="POST" action="/campaignComment/{{$data->eventId}}">
             <textarea name="comment" id="" cols="30" rows="10"></textarea>
             <input type="submit" value="comment">
         </form>
     </div>
+    @endif
 
     <br>
     <br>
@@ -53,7 +58,7 @@
                 </ul>
             </div>
             @endforeach
-        
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>

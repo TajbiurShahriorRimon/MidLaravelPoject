@@ -12,6 +12,7 @@
     <title>Non Donors</title>
 </head>
 <body>
+@include('user.admin.index') <br>
 <div class="container">
     <table class="table">
         <thead>

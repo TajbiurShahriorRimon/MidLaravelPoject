@@ -12,9 +12,16 @@
     <title>Document</title>
 </head>
 <body>
+@include('user.admin.index') <br>
 @if(session()->has('eventAcceptMessage'))
     <div class="alert alert-success">
         {{ session()->get('eventAcceptMessage') }}
+    </div>
+@endif
+
+@if(session()->has('removePendingEventMsg'))
+    <div class="alert alert-success">
+        {{ session()->get('removePendingEventMsg') }}
     </div>
 @endif
 
@@ -23,7 +30,8 @@
         <table align="center">
             <tr>
                 <td>
-                    <img src="https://image.shutterstock.com/image-photo/creative-ideas-bring-money-white-260nw-1610211523.jpg" alt="" height="200" width="300">
+                    {{--<img src="https://image.shutterstock.com/image-photo/creative-ideas-bring-money-white-260nw-1610211523.jpg" alt="" height="200" width="300">--}}
+                    <img src="{{asset($event['image'])}}" alt="" height="200" width="300">
                 </td>
             </tr>
             <tr>
@@ -40,7 +48,7 @@
                 <td>
                     <a href="/eventDetails" class="btn btn-info">Check Details</a>
                     <a href="/eventRequest/approveForm/{{$event['eventId']}}" style="color: #2d3439" class="btn btn-success">Approve</a>
-                    <a href="" style="color: lightskyblue" class="btn btn-danger">Remove Event</a>
+                    <a href="/events/removePendingEvent/{{$event['eventId']}}" style="color: lightskyblue" class="btn btn-danger">Remove Event</a>
                 </td>
             </tr>
         </table>

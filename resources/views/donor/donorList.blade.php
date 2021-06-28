@@ -12,6 +12,7 @@
     <title>Donor List</title>
 </head>
 <body>
+@include('user.admin.index') <br>
     <div align="center">
         <a href="/topDonor"><strong>Top Donor Details</strong></a>
         <a href="/nonDonorList">Non Donor List</a>

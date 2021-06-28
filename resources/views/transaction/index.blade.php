@@ -12,6 +12,7 @@
     <title>Document</title>
 </head>
 <body>
+@include('user.admin.index') <br>
 <div align="center">Transaction Report</div>
 <div class="container">
     <h2>Yearly Report</h2>
