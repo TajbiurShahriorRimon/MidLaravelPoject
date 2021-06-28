@@ -19,6 +19,9 @@ class SessionVrify
         if ($request->session()->has('name')) {
             return $next($request);
         }
+        else if ($request->session()->has('email')) { //change starts
+            return $next($request);
+        }//change end
         else{
             $request->session()->flash('msg','! invalid request !');
             return redirect('/login');

@@ -6,7 +6,7 @@ use \App\Http\Controllers\DonationController;
 use \App\Http\Controllers\OrganizerController;
 use \App\Http\Controllers\EventController;
 use \App\Http\Controllers\NotificationController;
-
+use \App\Http\Controllers\LogoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,32 +21,34 @@ use \App\Http\Controllers\NotificationController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-Route::view('/user/admin/index', 'user.admin.index');
-Route::get('/transaction', [\App\Http\Controllers\TransactionController::class, 'index']);
-Route::get('/userList', [UserController::class, 'index']);
-Route::get('/user/profile/{id}', [UserController::class, 'show']);
-Route::get('/user/changeStatus/{id}/{status}', [UserController::class, 'changeStatus']);
-Route::view('/addManager', 'manager.create');
-Route::post('/addManager', [UserController::class, 'addManager']);
-Route::get('/donationReport/yearly', [DonationController::class, 'index']);
-Route::get('/donorList', [DonationController::class, 'donorList']);
-Route::get('/topDonor', [DonationController::class, 'topDonor']);
-Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
-Route::get('/nonOrganizerList', [OrganizerController::class, 'nonOrganizerList']);
-Route::get('/topOrganizer', [OrganizerController::class, 'topOrganizerDetails']);
-Route::get('/userHomePage/events', [EventController::class, 'index']);
-Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents']);
-Route::get('/events/eventRequest', [EventController::class, 'eventRequest']);
-Route::get('/eventRequest/approveForm/{id}', [EventController::class, 'approveForm']);
-Route::post('/eventRequest/approveForm/{id}', [EventController::class, 'confirmCreateEvent']);
-Route::get('/organizerList/report', [OrganizerController::class, 'organizerNumOfEvents']);
-Route::get('/organizerReport/yearly/{id}', [OrganizerController::class, 'organizerYearEventReport']);
-Route::get('/event/smallReport/{id}', [EventController::class, 'eventBriefDetails']);
-Route::get('/event/removeActiveEvent/{id}', [EventController::class, 'showEventForRemove']);
-Route::get('/event/confirmRemoveEvent/{id}', [EventController::class, 'removeActiveEvent']);
-Route::get('/admin/notice', [NotificationController::class, 'adminNotification']);
-Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadNotice']);
+Route::group(['middleware'=>['sess']], function() {
+    Route::view('/user/admin/index', 'user.admin.index');
+    Route::get('/transactions', [\App\Http\Controllers\TransactionController::class, 'index']);
+    Route::get('/userList', [UserController::class, 'index']);
+    Route::get('/user/profile/{id}', [UserController::class, 'show']);
+    Route::get('/user/changeStatus/{id}/{status}', [UserController::class, 'changeStatus']);
+    Route::view('/addManager', 'manager.create');
+    Route::post('/addManager', [UserController::class, 'addManager']);
+    Route::get('/donationReport/yearly', [DonationController::class, 'index']);
+    Route::get('/donorList', [DonationController::class, 'donorList']);
+    Route::get('/topDonor', [DonationController::class, 'topDonor']);
+    Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
+    Route::get('/nonOrganizerList', [OrganizerController::class, 'nonOrganizerList']);
+    Route::get('/topOrganizer', [OrganizerController::class, 'topOrganizerDetails']);
+    Route::get('/userHomePage/events', [EventController::class, 'index']);
+    Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents']);
+    Route::get('/events/eventRequest', [EventController::class, 'eventRequest']);
+    Route::get('/eventRequest/approveForm/{id}', [EventController::class, 'approveForm']);
+    Route::post('/eventRequest/approveForm/{id}', [EventController::class, 'confirmCreateEvent']);
+    Route::get('/organizerList/report', [OrganizerController::class, 'organizerNumOfEvents']);
+    Route::get('/organizerReport/yearly/{id}', [OrganizerController::class, 'organizerYearEventReport']);
+    Route::get('/event/smallReport/{id}', [EventController::class, 'eventBriefDetails']);
+    Route::get('/event/removeActiveEvent/{id}', [EventController::class, 'showEventForRemove']);
+    Route::get('/event/confirmRemoveEvent/{id}', [EventController::class, 'removeActiveEvent']);
+    Route::get('/admin/notice', [NotificationController::class, 'adminNotification']);
+    Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadNotice']);
+    Route::get('/admin/logout', [LogoutController::class, 'index']);
+});
 
 
 Route::get('/login', 'loginController@index');
