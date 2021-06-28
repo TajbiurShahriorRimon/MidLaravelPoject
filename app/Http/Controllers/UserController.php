@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManagerRequest;
+use App\Models\org_users;
 use App\Models\User;
 use App\Models\Users;
 use Illuminate\Http\Request;
@@ -65,7 +66,15 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
+    }
+    public function editpage()
+    {
+        return view('manager.man_updateprofile');
+    }
+    public function eventreport()
+    {
+        return view('man_ev.man_eventreport');
     }
 
     /**
@@ -108,5 +117,17 @@ class UserController extends Controller
         DB::insert("INSERT INTO users (userName, email, password, status, type)
                             VALUES ('$request->name', '$request->email', '$request->password', '1', 'manager')");
         return redirect('/userList')->with('message', "Manager Account Created Successfully");
+    }
+    public function Updateprof(ManagerRequest $req){
+        // echo "Testing";
+        $userId=$req->session()->get('userId');
+        $man=org_users::find($userId);
+
+        $man->userName=$req->userName;
+        $man->email=$req->email;
+        $man->password=$req->password;
+
+        $man->save();
+        return redirect('/login');
     }
 }

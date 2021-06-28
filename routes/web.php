@@ -57,7 +57,7 @@ Route::group(['middleware'=>['sess']], function(){
 
     Route::get('/org/mycampaign', 'orgMycampaign@index');
     Route::get('/org/delete/{eId}', 'orgMycampaign@delete');
-    
+
     Route::get('/campaignDetails', 'orgCampaignDetails@index');
     Route::get('/transaction', 'orgCampaignTran@index');
 
@@ -69,3 +69,16 @@ Route::group(['middleware'=>['sess']], function(){
 
     Route::get('/org/logout', 'orgLogout@index');
 });
+Route::group(['middleware'=>['Msess']], function(){
+    Route::get('/man_dashboard', 'ManeventmanageController@Dashboard');
+    Route::get('/man_dashboarddata', 'ManeventmanageController@Dashboard');
+    Route::get('/man_Profile', 'manDashboardController@Profile');
+    Route::get('/man_eventslist', 'ManeventmanageController@show');
+    Route::get('/man_eventdone', 'ManeventmanageController@eventsinfo');
+    Route::get('/event_details/{id}', 'ManeventmanageController@details')->name('manager.details');
+    Route::get('/man_updateprof', 'UserController@editpage');
+    Route::post('/man_updateprof', 'UserController@Updateprof');
+    Route::get('/man_eventreport', 'UserController@eventreport');
+    Route::post('/man_eventreport', 'ManeventmanageController@eventreport');
+});
+

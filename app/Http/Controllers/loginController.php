@@ -7,6 +7,8 @@ use App\Http\Requests\loginRequest;
 use App\Models\org;
 use App\Models\org_users;
 
+use App\Models\maneventmanage;
+use App\Models\Events;
 class loginController extends Controller
 {
     public function index(){
@@ -24,7 +26,8 @@ class loginController extends Controller
         $data2=org_users::where('email', $req->mail)
                         ->where('password', $req->pass)
                         ->get();
-        
+
+
         if (count($data)>0 || count($data2)>0) {
             $type=$data2[0]->type;
             if ($type=='user') {
@@ -36,6 +39,15 @@ class loginController extends Controller
                 $req->session()->put('address', $data[0]->address);
                 $req->session()->put('phone', $data[0]->phone);
                 return redirect('/org_dashboard');
+            }
+            if ($type=='manager') {
+                $req->session()->put('userId', $data2[0]->userId);
+                $req->session()->put('userName', $data2[0]->userName);
+                $req->session()->put('email', $data2[0]->email);
+                $req->session()->put('password', $data2[0]->password);
+                $req->session()->put('type', $data2[0]->type);
+
+                return redirect('/man_dashboarddata');
             }
         }
         else{
