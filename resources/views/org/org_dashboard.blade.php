@@ -24,6 +24,8 @@
             Campaign Start :  {{$event->startDate}} <br>
             Campaign End :  {{$event->endDate}}
         </p>
+        <br>
+        <span>Manager Id : {{$event->managerId}}</span>
         <hr>
         <p class="status">
             <span>Donor : 0</span>  | <span> Raised :  {{$event->raisedAmount}}</span>  |  <span>Goal : {{$event->targetAmount}}</span>

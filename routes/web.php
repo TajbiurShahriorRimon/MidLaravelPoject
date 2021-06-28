@@ -70,6 +70,7 @@ Route::group(['middleware'=>['sess']], function(){
     Route::post('/create', 'orgCreateController@add');
 
     Route::get('/org_dashboard', 'orgDashboardController@index');
+    Route::post('/org_dashboard', 'orgDashboardController@search');
 
     Route::get('/org/mycampaign', 'orgMycampaign@index');
     Route::get('/org/delete/{eId}', 'orgMycampaign@delete');
@@ -80,7 +81,8 @@ Route::group(['middleware'=>['sess']], function(){
     Route::get('/campaignDetails/{eId}', 'orgCampaignDetails@index');
     Route::post('/campaignComment/{eId}', 'orgCampaignComment@insert');
 
-    Route::get('/transaction', 'orgCampaignTran@index');
+    Route::get('/donate/transaction/{eId}', 'orgCampaignTran@index');
+    Route::post('/donate/transaction/{eId}', 'orgCampaignTran@sendMoney');
 
     Route::get('/details', 'orgDetails@index')->name('org.details');
     Route::get('/editProfile', 'orgEditProfile@index');

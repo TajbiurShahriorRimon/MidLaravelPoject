@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\orgCampaign;
+use App\Models\org_users;
 
 class orgDashboardController extends Controller
 {
@@ -11,7 +12,14 @@ class orgDashboardController extends Controller
     {
     $data=orgCampaign::all();
         // print_r($data[0]->title);
+
     return view('org.org_dashboard')->with('eventList', $data);
-    
+    }
+
+    public function search(Request $req){
+        $data2=orgCampaign::where('title', $req->search)
+                            ->get();
+
+        return view('org.org_dashboard')->with('eventList', $data2);
     }
 }

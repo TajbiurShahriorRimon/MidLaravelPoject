@@ -29,7 +29,7 @@
         </div>
 
         <div class="button">
-            <a href="/transaction">Donate</a>
+            <a href="/donate/transaction/{{$data->eventId}}">Donate</a>
         </div>
     </div>
 
