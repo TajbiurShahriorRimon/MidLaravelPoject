@@ -7,6 +7,8 @@ use App\Models\org_users;
 use App\Models\User;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use App\Http\Requests\donorreq;
+use App\Http\Requests\orgreq;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -23,6 +25,42 @@ class UserController extends Controller
         $data = json_decode(json_encode($result), true);
 
         return view('user.userList')->with('result', $data);
+    }
+    public function donorlist()
+    {
+        $result = DB::select('SELECT * from users WHERE type <> "user"');
+
+        $data = json_decode(json_encode($result), true);
+
+        return view('manager.man_donorlist')->with('donors', $data);
+    }
+    public function orglist()
+    {
+        $result = DB::select('SELECT * from users WHERE type <> "user"');
+
+        $data = json_decode(json_encode($result), true);
+
+        return view('manager.man_orglist')->with('orgs', $data);
+    }
+    public function donorindex()
+    {
+        return view('manager.man_donorsearch');
+    }
+    public function orgindex()
+    {
+        return view('manager.man_orgsearch');
+    }
+    public function donorsearch(donorreq $req)
+    {
+        $id=$req->userId;
+        $result = Users::find($id);
+        return view('manager.man_donorsearchresult')->with('donor', $result);
+    }
+    public function orgsearch(orgreq $req)
+    {
+        $id=$req->userId;
+        $result = Users::find($id);
+        return view('manager.man_donorsearchresult')->with('donor', $result);
     }
 
     /**

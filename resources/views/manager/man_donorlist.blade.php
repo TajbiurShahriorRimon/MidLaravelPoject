@@ -11,7 +11,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/man_eventsdetails.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/man_donorlist.css') }}">
     <title>Welcome</title>
 </head>
 
@@ -45,8 +45,8 @@
                 </a>
 
                 <ul class="org-show">
-                    <li><a href="/man_orglist">Organizers list</a></li>
-                    <li><a href="/man_orgsearch">Organizers Searching</a></li>
+                    <li><a href="/orglist">Organizers list</a></li>
+                    <li><a href="/orgsearch">Organizers Searching</a></li>
                 </ul>
             </li>
             <li><a href="#" class="cal-btn">Calculations
@@ -86,44 +86,27 @@
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
 
+    <h2>Donors:</h2>
+    <table>
+        <tr>
+            <td>Donor's ID</td>
+            <td>Donor's Name</td>
+            <td>Email</td>
+            <td>Status</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        @foreach ($donors as $donor)
+            <tr>
+                <td>{{ $donor['userId'] }}</td>
+                <td>{{ $donor['userName'] }}</td>
+                <td>{{ $donor['email'] }}</td>
+                <td>{{ $donor['status'] }}</td>
+            </tr>
+        @endforeach
 
-
-    <div class="card">
-
-        <img src="{{ $event['image'] }}" alt="">
-        <p class="title">
-            Event ID :{{ $event['eventId'] }}
-        </p>
-        <p class="title">
-            Event Title :{{ $event['title'] }}
-        </p>
-        <p Starting Date: {{ $event['startDate'] }} </p>
-        <p>
-            Ending Date: {{ $event['endDate'] }}
-        </p>
-        <p>
-            Involved person's: {{ $event['userId'] }}
-        </p>
-        <p>
-            Assigned Manager: {{ $event['managerId'] }}
-        </p>
-        <p>
-            Assigned Manager: {{ $event['managerId'] }}
-        </p>
-        <p>Event's Information:</p>
-        <div class="event-info">
-            {{ $event['description'] }}
-        </div>
-        <p class="status">
-            <span> Raised : {{ $event['raisedAmount'] }}</span> | <span>Goal :
-                {{ $event['targetAmount'] }}</span>|<span>commission : {{ $event['commission'] }}%</span>
-        </p>
-        <a href="/man_eventslist">Back</a>
-
-    </div>
-
-
-
+    </table>
 </body>
 
 </html>

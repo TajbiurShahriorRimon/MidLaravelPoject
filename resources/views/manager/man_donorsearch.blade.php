@@ -11,7 +11,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/man_eventsdetails.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/man_donorsearch.css') }}">
     <title>Welcome</title>
 </head>
 
@@ -87,43 +87,24 @@
     </script>
 
 
+    <form method="POST" class="ds-form">
+        <table>
+            <tr>
+                <td>Donor Id:</td>
+                <td><input type="text" name="userId"></td>
+                <div class="error-msg">@error('userId'){{ $message }}@enderror</div>
+                </tr>
+                <tr>
+                    <td>Donor Name:</td>
+                    <td><input type="text" name="userName"></td>
+                    <div class="error-msg">@error('userName'){{ $message }}@enderror</div>
+                    </tr>
 
-    <div class="card">
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Search"></td>
+                    </tr>
+                </table>
+        </body>
 
-        <img src="{{ $event['image'] }}" alt="">
-        <p class="title">
-            Event ID :{{ $event['eventId'] }}
-        </p>
-        <p class="title">
-            Event Title :{{ $event['title'] }}
-        </p>
-        <p Starting Date: {{ $event['startDate'] }} </p>
-        <p>
-            Ending Date: {{ $event['endDate'] }}
-        </p>
-        <p>
-            Involved person's: {{ $event['userId'] }}
-        </p>
-        <p>
-            Assigned Manager: {{ $event['managerId'] }}
-        </p>
-        <p>
-            Assigned Manager: {{ $event['managerId'] }}
-        </p>
-        <p>Event's Information:</p>
-        <div class="event-info">
-            {{ $event['description'] }}
-        </div>
-        <p class="status">
-            <span> Raised : {{ $event['raisedAmount'] }}</span> | <span>Goal :
-                {{ $event['targetAmount'] }}</span>|<span>commission : {{ $event['commission'] }}%</span>
-        </p>
-        <a href="/man_eventslist">Back</a>
-
-    </div>
-
-
-
-</body>
-
-</html>
+        </html>

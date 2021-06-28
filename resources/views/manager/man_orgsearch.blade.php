@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="{{ asset('css/man_donorsearch.css') }}">
@@ -17,7 +17,7 @@
 
 <body>
 
-    @include('manager.navbar')
+    @include('manager.man_navbar')
     <nav class="sidebar">
         <div class="text">Options</div>
         <ul>
@@ -26,11 +26,9 @@
                 </a>
 
                 <ul class="events-show">
-                    <li><a href="/eventslist">events list</a></li>
-                    <li><a href="/eventdone">Finished Events</a></li>
-                    <li><a href="/eventrun">Running Events</a></li>
-                    <li><a href="/eventpost">Post Events</a></li>
-                    <li><a href="/eventUpdate">Event Update</a></li>
+                    <li><a href="/man_eventslist">events list</a></li>
+                    <li><a href="/man_eventdone">Finished Events</a></li>
+                    <li><a href="/man_eventreport">Event Report</a></li>
                 </ul>
             </li>
             <li><a href="#" class="donors-btn">Donors
@@ -38,8 +36,8 @@
                 </a>
 
                 <ul class="donors-show">
-                    <li><a href="/donorlist">Donor's list</a></li>
-                    <li><a href="/donorsearch">Donor Searching</a></li>
+                    <li><a href="/man_donorlist">Donor's list</a></li>
+                    <li><a href="/man_donorsearch">Donor Searching</a></li>
                 </ul>
             </li>
             <li><a href="#" class="org-btn">Organizers
@@ -47,8 +45,8 @@
                 </a>
 
                 <ul class="org-show">
-                    <li><a href="/orglist">Organizers list</a></li>
-                    <li><a href="/orgsearch">Organizers Searching</a></li>
+                    <li><a href="/man_orglist">Organizers list</a></li>
+                    <li><a href="/man_orgsearch">Organizers Searching</a></li>
                 </ul>
             </li>
             <li><a href="#" class="cal-btn">Calculations
@@ -83,30 +81,30 @@
             $('nav ul .cal-show').toggleClass("show3");
             $('nav ul .fourth').toggleClass("rotate");
         });
-
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
 
 
-    <form method="post" class="ds-form">
+    <form method="POST" class="ds-form">
         <table>
             <tr>
-                <td>Donor Id:</td>
-                <td><input type="text" name="donorID"></td>
-            </tr>
-            <tr>
-                <td>Donor Name:</td>
-                <td><input type="text" name="donorName"></td>
-            </tr>
+                <td>Organizer's Id:</td>
+                <td><input type="text" name="userId"></td>
+                <div class="error-msg">@error('userId'){{ $message }}@enderror</div>
+                </tr>
+                <tr>
+                    <td>Organizer's Name:</td>
+                    <td><input type="text" name="userName"></td>
+                    <div class="error-msg">@error('userName'){{ $message }}@enderror</div>
+                    </tr>
 
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Search"></td>
-            </tr>
-        </table>
-    </form>
-</body>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Search"></td>
+                    </tr>
+                </table>
+        </body>
 
-</html>
+        </html>

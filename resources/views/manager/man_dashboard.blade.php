@@ -45,8 +45,8 @@
                 </a>
 
                 <ul class="org-show">
-                    <li><a href="/orglist">Organizers list</a></li>
-                    <li><a href="/orgsearch">Organizers Searching</a></li>
+                    <li><a href="/man_orglist">Organizers list</a></li>
+                    <li><a href="/man_orgsearch">Organizers Searching</a></li>
                 </ul>
             </li>
             <li><a href="#" class="cal-btn">Calculations

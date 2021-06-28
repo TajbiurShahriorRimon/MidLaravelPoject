@@ -104,6 +104,7 @@ a:hover {
 table {
     margin: 25px 300px;
     background: #1ce4eb;
+    border: lightcyan;
 }
 h2 {
     margin: 25px 300px;

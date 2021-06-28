@@ -11,7 +11,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/man_eventsdetails.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/man_donorsearch.css') }}">
     <title>Welcome</title>
 </head>
 
@@ -85,45 +85,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
-
-
-
-    <div class="card">
-
-        <img src="{{ $event['image'] }}" alt="">
-        <p class="title">
-            Event ID :{{ $event['eventId'] }}
-        </p>
-        <p class="title">
-            Event Title :{{ $event['title'] }}
-        </p>
-        <p Starting Date: {{ $event['startDate'] }} </p>
-        <p>
-            Ending Date: {{ $event['endDate'] }}
-        </p>
-        <p>
-            Involved person's: {{ $event['userId'] }}
-        </p>
-        <p>
-            Assigned Manager: {{ $event['managerId'] }}
-        </p>
-        <p>
-            Assigned Manager: {{ $event['managerId'] }}
-        </p>
-        <p>Event's Information:</p>
-        <div class="event-info">
-            {{ $event['description'] }}
-        </div>
-        <p class="status">
-            <span> Raised : {{ $event['raisedAmount'] }}</span> | <span>Goal :
-                {{ $event['targetAmount'] }}</span>|<span>commission : {{ $event['commission'] }}%</span>
-        </p>
-        <a href="/man_eventslist">Back</a>
-
-    </div>
-
-
-
+    <center>
+        <table>
+            <tr>
+                <td>Donor Id:</td>
+                <td><input type="text" value="{{ $donor['userId'] }}" name="userId"></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Donor Name:</td>
+                <td><input type="text" value="{{ $donor['userName'] }}" name="userName"></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" value="{{ $donor['email'] }}" name="userName"></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Status:</td>
+                <td><input type="text" value="{{ $donor['status'] }}" name="userName"></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </center>
 </body>
 
 </html>

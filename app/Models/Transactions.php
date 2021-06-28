@@ -9,4 +9,6 @@ class Transactions extends Model
 {
     //use HasFactory;
     protected $table = 'transactions';
+    protected $primaryKey = 'transactionId';
+    public $timestamps = false;
 }

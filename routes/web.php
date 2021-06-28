@@ -74,6 +74,15 @@ Route::group(['middleware'=>['Msess']], function(){
     Route::get('/man_dashboarddata', 'ManeventmanageController@Dashboard');
     Route::get('/man_Profile', 'manDashboardController@Profile');
     Route::get('/man_eventslist', 'ManeventmanageController@show');
+    Route::get('/man_donorlist', 'UserController@donorlist');
+
+    Route::get('/man_donorsearch', 'UserController@donorindex');
+    Route::post('/man_donorsearch', 'UserController@donorsearch');
+
+    Route::get('/man_orglist', 'UserController@orglist');
+    Route::get('/man_orgsearch', 'UserController@orgindex');
+    Route::post('/man_orgsearch', 'UserController@orgsearch');
+
     Route::get('/man_eventdone', 'ManeventmanageController@eventsinfo');
     Route::get('/event_details/{id}', 'ManeventmanageController@details')->name('manager.details');
     Route::get('/man_updateprof', 'UserController@editpage');
