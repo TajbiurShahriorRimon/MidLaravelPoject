@@ -47,7 +47,7 @@
 <body>
 <ul>
     @yield('navBar')
-    <li><a href="/transaction">Transaction</a></li>
+    <li><a href="/transactions">Transaction</a></li>
     <li><a href="/userList">User List</a></li>
     <li><a href="/addManager">Add Manager</a></li>
     <li><a href="/donationReport/yearly">Donation Report</a></li>
@@ -56,6 +56,7 @@
     <li><a href="/organizerList/report">Organizer Report</a></li>
     <li><a href="/nonOrganizerList" style="float: right">Non Organizer</a></li>
     <li><a href="/admin/notice">Notice</a></li>
+    <li><a href="/admin/logout">Logout</a></li>
 </ul>
 </body>
 </html>

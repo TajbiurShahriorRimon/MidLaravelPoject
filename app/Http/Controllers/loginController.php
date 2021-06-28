@@ -24,7 +24,7 @@ class loginController extends Controller
         $data2=org_users::where('email', $req->mail)
                         ->where('password', $req->pass)
                         ->get();
-        
+
         if (count($data)>0 || count($data2)>0) {
             $type=$data2[0]->type;
             if ($type=='user') {
@@ -38,6 +38,16 @@ class loginController extends Controller
                 return redirect('/org_dashboard');
             }
         }
+        if(count($data2) > 0){  //changes starts
+            $type=$data2[0]->type;
+            $user_email = $data2[0]->email;
+            if($type == 'admin'){
+                $req->session()->put('id2', $data2[0]->userId);
+                $req->session()->put('email', $user_email);
+                $req->session()->put('type', $type);
+                return redirect('/userHomePage/events');
+            }
+        }//change ends
         else{
             $req->session()->flash('msg','invalid user !');
             return redirect('/login') ->withInput();
