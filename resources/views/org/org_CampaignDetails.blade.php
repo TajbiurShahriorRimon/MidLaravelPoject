@@ -14,17 +14,18 @@
     @include('org.navbar')
 
     <div class="container">
-        <img src="asset/banner/campaign/1.jpg"  alt="">
+        <img src="/{{$data->image}}" alt="event_image">
         <div class="container2">
-            <span>Donor : 0</span>  | <span> Raised : 0</span>  |  <span>Goal : $2000</span>
+            <span>{{$data->title}}</span> <br>
+            <span>Donor : 0</span>  | <span> Raised : {{$data->raisedAmount}}</span>  |  <span>Goal : {{$data->targetAmount}}</span>
         </div>
         <br>
         <p>
-            Campaign Start : 25 May, 2021  |
-            Campaign End : 28 June, 2021
+            Campaign Start : {{$data->startDate}}  |
+            Campaign End : {{$data->endDate}}
         </p>
         <div class="text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+            {{$data->description}} 
         </div>
 
         <div class="button">
@@ -34,14 +35,26 @@
 
 
     <div class="comment">
-        <form action="">
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+        <form method="POST" action="/campaignComment/{{$data->eventId}}">
+            <textarea name="comment" id="" cols="30" rows="10"></textarea>
             <input type="submit" value="comment">
         </form>
-
     </div>
-    
 
+    <br>
+    <br>
+    <div class="comment-section">
+        <center><b>!--Comments--!</b></center>
+        <br>
+            @foreach ($cmt as $item)
+            <div class="cmText">
+                <ul>
+                    <li><b>{{$item['description']}}</b>  ------>  Date : {{$item['date']}}</li>
+                </ul>
+            </div>
+            @endforeach
+        
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>

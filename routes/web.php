@@ -75,7 +75,9 @@ Route::group(['middleware'=>['sess']], function(){
     Route::post('/org/edit/{eId}', 'orgEditCampaign@update');
 
 
-    Route::get('/campaignDetails', 'orgCampaignDetails@index');
+    Route::get('/campaignDetails/{eId}', 'orgCampaignDetails@index');
+    Route::post('/campaignComment/{eId}', 'orgCampaignComment@insert');
+
     Route::get('/transaction', 'orgCampaignTran@index');
 
     Route::get('/details', 'orgDetails@index')->name('org.details');
