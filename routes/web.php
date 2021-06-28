@@ -30,6 +30,7 @@ Route::group(['middleware'=>['sess']], function() {
     Route::view('/addManager', 'manager.create');
     Route::post('/addManager', [UserController::class, 'addManager']);
     Route::get('/donationReport/yearly', [DonationController::class, 'index']);
+    Route::get('/donationReport/monthly/{year}', [DonationController::class, 'monthlyDonationReport']);
     Route::get('/donorList', [DonationController::class, 'donorList']);
     Route::get('/topDonor', [DonationController::class, 'topDonor']);
     Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
@@ -48,6 +49,7 @@ Route::group(['middleware'=>['sess']], function() {
     Route::get('/admin/notice', [NotificationController::class, 'adminNotification']);
     Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadNotice']);
     Route::get('/admin/logout', [LogoutController::class, 'index']);
+    Route::get('/events/removePendingEvent/{id}', [EventController::class, 'removePendingEvent']);
 });
 
 

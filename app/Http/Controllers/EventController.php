@@ -127,6 +127,13 @@ class EventController extends Controller
         return redirect('/userHomePage/events')->with('activeEventRemoveMessage', "Event Removed Successfully");
     }
 
+    public function removePendingEvent($id)
+    {
+        DB::select("Delete from events where eventId = $id");
+
+        return redirect('/events/eventRequest')->with('removePendingEventMsg', "Successfully removed pending Event");
+    }
+
     /**
      * Show the form for creating a new resource.
      *

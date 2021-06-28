@@ -62,7 +62,7 @@
             </tr>
             <tr>
                 <td>
-                    <a href="/eventDetails" class="btn btn-info">Check Details</a>
+                    <a href="/campaignDetails/{{$event['eventId']}}" class="btn btn-info">Check Details</a>
                     <a href="/event/smallReport/{{$event['eventId']}}" class="w3-button w3-blue">Check Report</a>
                 </td>
             </tr>
