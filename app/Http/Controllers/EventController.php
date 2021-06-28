@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequest;
+use App\Models\Events;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -46,7 +48,7 @@ class EventController extends Controller
         return view('event.requestApproval', compact('events', 'managers'));
     }
 
-    public function confirmCreateEvent($id, Request $request){
+    public function confirmCreateEvent($id, EventRequest $request){
         $todayDate = date('Y-m-d');
 
         $convertStartDate = strtotime($request->startDate);
@@ -59,8 +61,13 @@ class EventController extends Controller
                                 ". Start date: ".$request->startDate.". End Date: ".$request->endDate;
 
         DB::update("update events set managerId = $request->managerUserId,
-                                    startDate = $request->startDate, endDate = $request->endDate,
+                                    startDate = $convertStartDate, endDate = $convertEndDate,
                                     commission = $request->commission, status = 1 where eventId = $id");
+
+        $event = Events::find($id);
+        $event->startDate=$request->startDate;
+        $event->endDate=$request->endDate;
+        $event->save();
 
         $organizer = DB::select("select * from events where eventId = $id");
         $organizerInfo = json_decode(json_encode($organizer), true);
@@ -88,9 +95,6 @@ class EventController extends Controller
                           values ('$notificationId', '$organizerId', '$notificationReceiverStatus')");
 
         return redirect('/events/eventRequest')->with('eventAcceptMessage', "Event Created Successfully");
-
-        //return $newFormat;
-        //print_r($adminInfo);
     }
 
     public function eventBriefDetails($id){
