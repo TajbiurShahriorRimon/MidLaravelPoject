@@ -16,12 +16,12 @@ class orgCampaignTran extends Controller
         // echo $eId;
         // echo $req->amount;
 
-        $todayDate = date('Y-m-d');//changes made
+        //$todayDate = date('Y-m-d');//changes made
         $donation = new org_eventDonate();
         $donation->eventId=$eId;
         $donation->Amount=$req->amount;
         $donation->userId=$req->session()->get('id2');
-        $donation->date = $todayDate;//changes made
+        //$donation->date = $todayDate;//changes made
         $donation->save();
 
         $data=orgCampaign::find($eId);
