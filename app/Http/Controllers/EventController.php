@@ -190,6 +190,24 @@ class EventController extends Controller
         return redirect('/userHomePage/events')->with('managerChangeForEventMsg', "Manager Changed Successfully for Event!");
     }
 
+    public function detailReviews($id)
+    {
+        $result = DB::select("SELECT users.email, users.userName, comments.description, commentId, comments.date, comments.eventId
+                                    FROM comments, users WHERE eventId = $id
+                                    AND comments.userId = users.userId");
+
+        $data = json_decode(json_encode($result), true);
+
+        return view('event.detailReviews')->with('events', $data);
+    }
+
+    public function removeEventComment($id, $eventId)
+    {
+        DB::select("Delete from comments where commentId = $id");
+
+        return redirect('/event/detailReviews/'.$eventId)->with('removeEventCommentMsg', "Successfully removed Event Comment");
+    }
+
     /**
      * Show the form for creating a new resource.
      *

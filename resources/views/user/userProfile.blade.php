@@ -25,6 +25,8 @@
     <title>Document</title>
 </head>
 <body>
+@include('user.admin.index') <br>
+
 <div class="container">
     <br><br><br>
     <table class="table">
