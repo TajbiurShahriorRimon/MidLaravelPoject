@@ -86,37 +86,48 @@
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
     <center>
-        <table>
-            <tr>
-                <td>Donor Id:</td>
-                <td><input type="text" value="{{ $donor['userId'] }}" name="userId"></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Donor Name:</td>
-                <td><input type="text" value="{{ $donor['userName'] }}" name="userName"></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="text" value="{{ $donor['email'] }}" name="userName"></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Status:</td>
-                <td><input type="text" value="{{ $donor['status'] }}" name="userName"></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-        </table>
-    </center>
-</body>
+        <form method="POST">
+            <table>
+                <tr>
+                    <td>TotalAmount:</td>
+                    <td><input type="text" value="{{ $result['totalAmount'] }}" name="totalAmount">
+                        <span style="color: red"
+                            class="error-msg">@error('totalAmount'){{ $message }}@enderror</span>
+                        </td>
 
-</html>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Commission Amount</td>
+                        <td><input type="text" value="{{ $result['commissionAmount'] }}" name="commissionAmount">
+                            <span class="error-msg"
+                                style="color: red">@error('commissionAmount'){{ $message }}@enderror
+                                </span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Date:</td>
+                            <td><input type="text" value="{{ $result['date'] }}" name="date">
+
+                                <span style="color: red" class="error-msg">@error('date'){{ $message }}@enderror</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Update" name="Update"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </center>
+            </body>
+
+            </html>

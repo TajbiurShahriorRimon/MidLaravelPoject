@@ -54,8 +54,8 @@
                 </a>
 
                 <ul class="cal-show">
-                    <li><a href="#">Monthly</a></li>
-                    <li><a href="#">Annual</a></li>
+                    <li><a href="/monthly_calc">Monthly</a></li>
+                    <li><a href="/yearly_calc">Annual</a></li>
                 </ul>
             </li>
             <li><a href="#">Notices</a></li>

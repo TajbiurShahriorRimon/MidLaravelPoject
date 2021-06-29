@@ -83,6 +83,13 @@ Route::group(['middleware'=>['Msess']], function(){
     Route::get('/man_orgsearch', 'UserController@orgindex');
     Route::post('/man_orgsearch', 'UserController@orgsearch');
 
+    Route::get('/monthly_calc', 'TransactionController@index');
+    Route::get('/man_monthlycalcupdate/{id}', 'TransactionController@edit');
+    Route::post('/man_monthlycalcupdate/{id}', 'TransactionController@update');
+    Route::get('/yearly_calc', 'TransactionController@index2');
+    Route::get('/man_yearlycalcupdate/{id}', 'TransactionController@edit2');
+    Route::post('/man_yearlycalcupdate/{id}', 'TransactionController@update2');
+
     Route::get('/man_eventdone', 'ManeventmanageController@eventsinfo');
     Route::get('/event_details/{id}', 'ManeventmanageController@details')->name('manager.details');
     Route::get('/man_updateprof', 'UserController@editpage');

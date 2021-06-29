@@ -11,7 +11,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/man_donorsearch.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/man_monthlycalc.css') }}">
     <title>Welcome</title>
 </head>
 
@@ -85,38 +85,56 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
-    <center>
-        <table>
+
+    <h2>Donors:</h2>
+    <table>
+        <tr>
+            <td>Transaction ID</td>
+            <td>Total Amount</td>
+            <td>Event ID</td>
+            <td>COMMISION AMOUNT</td>
+            <td>Date</td>
+            <td>TO DO</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+
+        @foreach ($results as $result)
             <tr>
-                <td>Donor Id:</td>
-                <td><input type="text" value="{{ $donor['userId'] }}" name="userId"></td>
+                <td>{{ $result['transactionId'] }}</td>
+                <td>{{ $result['totalAmount'] }}</td>
+                <td>{{ $result['eventId'] }}</td>
+                <td>{{ $result['commissionAmount'] }}</td>
+                <td>{{ $result['date'] }}</td>
+                <td>
+                    <a href="/man_monthlycalcupdate/{{ $result['transactionId'] }}">Update</a>
+                </td>
             </tr>
             <tr>
                 <td></td>
             </tr>
             <tr>
-                <td>Donor Name:</td>
-                <td><input type="text" value="{{ $donor['userName'] }}" name="userName"></td>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
             </tr>
             <tr>
-                <td>Email:</td>
-                <td><input type="text" value="{{ $donor['email'] }}" name="userName"></td>
-            </tr>
-            <tr>
                 <td></td>
             </tr>
-            <tr>
-                <td>Status:</td>
-                <td><input type="text" value="{{ $donor['status'] }}" name="userName"></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-        </table>
-    </center>
+        @endforeach
+
+    </table>
 </body>
 
 </html>
