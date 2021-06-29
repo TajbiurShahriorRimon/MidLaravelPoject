@@ -21,12 +21,12 @@ a:hover{
 }
 .card{
     background-color: white;
-    width: 25%;
+    width: 28%;
     height: 61 0px;
     padding: 10px;
     float: left;
     overflow: hidden;
-    margin: 25px 60px;
+    margin: 25px 40px;
     box-shadow: 0px 0px 25px #b3b2b2;
     opacity: 1;
 }

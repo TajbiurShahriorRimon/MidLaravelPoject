@@ -79,6 +79,7 @@
                     <tr>
                         <td>
                             <input type="file" name="img" id="">
+                            <div class="error-msg">@error('img'){{$message}}@enderror</div>
                         </td>
                     </tr>
                     <tr>
