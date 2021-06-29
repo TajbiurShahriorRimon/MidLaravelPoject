@@ -11,7 +11,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/man_eventslist.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/man_noticesposted.css') }}">
     <title>Welcome</title>
 </head>
 
@@ -45,8 +45,8 @@
                 </a>
 
                 <ul class="org-show">
-                    <li><a href="/orglist">Organizers list</a></li>
-                    <li><a href="/orgsearch">Organizers Searching</a></li>
+                    <li><a href="/man_orglist">Organizers list</a></li>
+                    <li><a href="/man_orgsearch">Organizers Searching</a></li>
                 </ul>
             </li>
             <li><a href="#" class="cal-btn">Calculations
@@ -85,33 +85,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
-    @foreach ($events as $event)
 
-
-        <div class="card">
-
-            <p class="title">
-                Event ID :{{ $event['eventId'] }}
-            </p>
-            <p class="title">
-                Event Title :{{ $event['title'] }}
-            </p>
-            <img src="{{ $event['image'] }}">
-            <p Starting Date: {{ $event['startDate'] }} </p>
-            <p>
-                Ending Date: {{ $event['endDate'] }}
-            </p>
-            <p>Event's Information:</p>
-            <div class="event-info">
-                {{ $event['description'] }}
-            </div>
-
-            <a href="/event_details/{{ $event['eventId'] }}">Event details</a>
-        </div>
-    @endforeach
-
-
-
+    <center>
+        <textarea id="notices" name="notices" rows="6" cols="50">
+        title:{{ $title }}
+        Message:{{ $message }}
+        userId:{{ $userId }}
+        date:{{ $date }}
+    </textarea>
+    </center>
 </body>
 
 </html>

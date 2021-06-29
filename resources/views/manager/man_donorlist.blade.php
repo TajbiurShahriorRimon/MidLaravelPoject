@@ -58,8 +58,8 @@
                     <li><a href="#">Annual</a></li>
                 </ul>
             </li>
-            <li><a href="#">Notices</a></li>
-            <li><a href="#">Feedback</a></li>
+            <li><a href="/man_notices">Notices</a></li>
+            <li><a href="/man_feedback">Feedback</a></li>
         </ul>
     </nav>
 

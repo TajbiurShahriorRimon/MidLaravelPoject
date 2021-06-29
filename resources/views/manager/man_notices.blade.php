@@ -11,7 +11,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/man_eventslist.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/man_notices.css') }}">
     <title>Welcome</title>
 </head>
 
@@ -45,8 +45,8 @@
                 </a>
 
                 <ul class="org-show">
-                    <li><a href="/orglist">Organizers list</a></li>
-                    <li><a href="/orgsearch">Organizers Searching</a></li>
+                    <li><a href="/man_orglist">Organizers list</a></li>
+                    <li><a href="/man_orgsearch">Organizers Searching</a></li>
                 </ul>
             </li>
             <li><a href="#" class="cal-btn">Calculations
@@ -85,33 +85,45 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
-    @foreach ($events as $event)
 
 
-        <div class="card">
+    <form method="POST" class="ds-form">
+        <table>
+            <tr>
+                <td>Notification Title:</td>
+                <td>
+                    <input type="text" name="title">
+                    <span style="color: red" class="error-msg">@error('title'){{ $message }}@enderror</span>
+                    </td>
 
-            <p class="title">
-                Event ID :{{ $event['eventId'] }}
-            </p>
-            <p class="title">
-                Event Title :{{ $event['title'] }}
-            </p>
-            <img src="{{ $event['image'] }}">
-            <p Starting Date: {{ $event['startDate'] }} </p>
-            <p>
-                Ending Date: {{ $event['endDate'] }}
-            </p>
-            <p>Event's Information:</p>
-            <div class="event-info">
-                {{ $event['description'] }}
-            </div>
+                </tr>
+                <tr>
+                    <td>Message:</td>
+                    <td><input type="text" name="message">
+                        <span style="color: red" class="error-msg">@error('message'){{ $message }}@enderror</span>
+                        </td>
 
-            <a href="/event_details/{{ $event['eventId'] }}">Event details</a>
-        </div>
-    @endforeach
+                    </tr>
+                    <tr>
+                        <td>UserID:</td>
+                        <td><input type="text" name="userId">
+                            <span style="color: red" class="error-msg">@error('userId'){{ $message }}@enderror</span>
+                            </td>
 
+                        </tr>
+                        <tr>
+                            <td>Date:</td>
+                            <td><input type="date" name="date">
+                                <span style="color: red" class="error-msg">@error('date'){{ $message }}@enderror</span>
+                                </td>
 
+                            </tr>
 
-</body>
+                            <tr>
+                                <td></td>
+                                <td><input type="submit" value="Search"></td>
+                            </tr>
+                        </table>
+                </body>
 
-</html>
+                </html>
