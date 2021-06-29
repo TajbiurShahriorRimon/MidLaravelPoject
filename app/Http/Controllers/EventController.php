@@ -102,7 +102,13 @@ class EventController extends Controller
                                     FROM eventdonations WHERE eventId = $id");
 
         $data = json_decode(json_encode($result), true);
-        return view('event.briefReport')->with('events', $data);
+
+        $info = DB::select("SELECT users.email, users.userId, userName, events.title, events.startDate, events.endDate
+                                    FROM events, users WHERE users.userId = events.eventId AND eventId = $id");
+        $data2 = json_decode(json_encode($info), true);
+
+        return view('event.briefReport')->with('events', $data)
+                                            ->with('information', $data2);
     }
 
     public function showEventForRemove($id)

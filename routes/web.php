@@ -55,6 +55,8 @@ Route::group(['middleware'=>['sess']], function() {
     Route::post('/event/information/{id}', [EventController::class, 'changeManagerForEvent']);
     Route::get('/event/chooseManagerForUpdate/{id}', [EventController::class, 'chooseManagerForEventUpdate']);
     Route::post('/event/chooseManagerForUpdate/{id}', [EventController::class, 'changeManagerForEvent']);
+    Route::get('/admin/createNotice', [NotificationController::class, 'adminCreateNotice']);
+    Route::post('/admin/createNotice', [NotificationController::class, 'adminSendNotice']);
 });
 
 
