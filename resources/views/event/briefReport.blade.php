@@ -30,6 +30,33 @@
             <td align="left">{{$event['totalRaisedAmount']}}</td>
         </tr>
         @endforeach
+
+        @foreach($information as $info)
+            <tr>
+                <td><strong>User Id</strong></td>
+                <td align="left">{{$info['userId']}}</td>
+            </tr>
+            <tr>
+                <td><strong>User Name</strong></td>
+                <td align="left">{{$info['userName']}}</td>
+            </tr>
+            <tr>
+                <td><strong>User Email</strong></td>
+                <td align="left">{{$info['email']}}</td>
+            </tr>
+            <tr>
+                <td><strong>Title</strong></td>
+                <td align="left">{{$info['title']}}</td>
+            </tr>
+            <tr>
+                <td><strong>Start Date</strong></td>
+                <td align="left">{{$info['startDate']}}</td>
+            </tr>
+            <tr>
+                <td><strong>End Date</strong></td>
+                <td align="left">{{$info['endDate']}}</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
 </div>

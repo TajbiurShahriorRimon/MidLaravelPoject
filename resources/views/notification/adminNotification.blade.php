@@ -13,6 +13,16 @@
 </head>
 <body>
 @include('user.admin.index') <br>
+
+@if(session()->has('noticeSentMsg'))
+    <div class="alert alert-success">
+        {{ session()->get('noticeSentMsg') }}
+    </div>
+@endif
+
+<div align="right">
+    <a href="/admin/createNotice" class="btn btn-success">+Create New Notice</a>
+</div>
 <div align="center">
     @foreach($notices as $notice)
         <table align="center">
