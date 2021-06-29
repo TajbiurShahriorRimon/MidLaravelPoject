@@ -36,7 +36,7 @@ Route::group(['middleware'=>['sess']], function() {
     Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
     Route::get('/nonOrganizerList', [OrganizerController::class, 'nonOrganizerList']);
     Route::get('/topOrganizer', [OrganizerController::class, 'topOrganizerDetails']);
-    Route::get('/userHomePage/events', [EventController::class, 'index']);
+    Route::get('/userHomePage/events', [EventController::class, 'index']); //Home page for admin
     Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents']);
     Route::get('/events/eventRequest', [EventController::class, 'eventRequest']);
     Route::get('/eventRequest/approveForm/{id}', [EventController::class, 'approveForm']);
@@ -50,6 +50,11 @@ Route::group(['middleware'=>['sess']], function() {
     Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadNotice']);
     Route::get('/admin/logout', [LogoutController::class, 'index']);
     Route::get('/events/removePendingEvent/{id}', [EventController::class, 'removePendingEvent']);
+    Route::get('/events/archivedEvents', [EventController::class, 'archivedEvents']);
+    Route::get('/event/information/{id}', [EventController::class, 'eventInformation']);
+    Route::post('/event/information/{id}', [EventController::class, 'changeManagerForEvent']);
+    Route::get('/event/chooseManagerForUpdate/{id}', [EventController::class, 'chooseManagerForEventUpdate']);
+    Route::post('/event/chooseManagerForUpdate/{id}', [EventController::class, 'changeManagerForEvent']);
 });
 
 

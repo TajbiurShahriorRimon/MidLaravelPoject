@@ -27,26 +27,6 @@
 </head>
 <body class="w3-container w3-center w3-animate-opacity">
 @include('user.admin.index') <br>
-@include('event.index')
-
-{{--
-@extends('../../event/index')
-
-@section('body')
-@endsection
---}}
-
-@if(session()->has('activeEventRemoveMessage'))
-    <div class="alert alert-success">
-        {{ session()->get('activeEventRemoveMessage') }}
-    </div>
-@endif
-
-@if(session()->has('managerChangeForEventMsg'))
-    <div class="alert alert-success">
-        {{ session()->get('managerChangeForEventMsg') }}
-    </div>
-@endif
 
 <div align="center">
     @foreach($events as $event)
@@ -73,12 +53,11 @@
                     <a href="/event/smallReport/{{$event['eventId']}}" class="w3-button w3-blue">Check Report</a>
                 </td>
             </tr>
-            <tr>
+            {{--<tr>
                 <td>
                     <a href="/event/removeActiveEvent/{{$event['eventId']}}" style="color: lightskyblue" class="btn btn-danger">Remove Event</a>
-                    <a href="/event/information/{{$event['eventId']}}" style="color: lightskyblue" class="btn btn-primary">Information</a>
                 </td>
-            </tr>
+            </tr>--}}
         </table>
         <hr>
         <br>

@@ -138,6 +138,52 @@ class EventController extends Controller
         return redirect('/events/eventRequest')->with('removePendingEventMsg', "Successfully removed pending Event");
     }
 
+    public function archivedEvents()
+    {
+        $result = DB::select("select * from events where status = 0");
+
+        $data = json_decode(json_encode($result), true);
+
+        return view('event.archivedEvents')->with('events', $data);
+    }
+
+    public function eventInformation($id){
+        $result = DB::select("SELECT * FROM events WHERE eventId = $id");
+
+        $managerResult = DB::select("SELECT * FROM users where type = 'manager' and status = 1");
+        $managers = json_decode(json_encode($managerResult), true);
+
+        $events = json_decode(json_encode($result), true);
+
+        $managerEventInfo = DB::select("SELECT users.userName, users.status, events.managerId FROM users, events
+                                                WHERE users.userId = events.managerId
+                                                AND users.type = 'manager' AND eventId = $id");
+        $managerEvent = json_decode(json_encode($managerEventInfo), true);
+        foreach ($managerEvent as $managerStatus){}
+
+        $statusOfManager = $managerStatus['status'];
+        return view('event.information', compact('events', 'managers', 'statusOfManager'));
+    }
+
+    public function chooseManagerForEventUpdate($id){
+        $result = DB::select("SELECT * FROM events WHERE eventId = $id");
+
+        $managerResult = DB::select("SELECT * FROM users where type = 'manager' and status = 1");
+        $managers = json_decode(json_encode($managerResult), true);
+
+        $events = json_decode(json_encode($result), true);
+        return view('event.managerForEventUpdate', compact('events', 'managers'));
+    }
+
+    public function changeManagerForEvent(Request $request, $id){
+        $event = Events::find($id);
+        $event->managerId=$request->managerUserId;
+        $event->save();
+
+        //return $request->managerUserId;
+        return redirect('/userHomePage/events')->with('managerChangeForEventMsg', "Manager Changed Successfully for Event!");
+    }
+
     /**
      * Show the form for creating a new resource.
      *
