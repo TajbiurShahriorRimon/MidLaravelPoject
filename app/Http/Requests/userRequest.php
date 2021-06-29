@@ -24,13 +24,13 @@ class userRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'mail'=>'required',
+            'name'=>'required|min:3',
+            'mail'=>'required|email',
             'flexRadioDefault'=>'required',
             'address'=>'required',
             'phone'=>'required',
-            'pass'=>'required | min: 4',
-            'cpass'=> 'required'
+            'password'=>'required|confirmed| min: 4',
+            'password_confirmation'=> 'required|min:4'
         ];
     }
 
@@ -42,8 +42,8 @@ class userRequest extends FormRequest
             'flexRadioDefault.required' => '**gender cannot be empty !',
             'address.required' => '**address cannot be empty !',
             'phone.required' => '**phone cannot be empty !',
-            'pass.required' => '**password cannot be empty !',
-            'cpass.required' => '**confirm pass cannot be empty !'
+            'password.required' => '**password cannot be empty !',
+            'password_confirmation.required' => '**confirm pass cannot be empty !'
 
         ];
     }

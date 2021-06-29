@@ -53,6 +53,7 @@
         <div class="card-text">
             {{session('desc2')}}
         </div>
+        <br>
             <span>{{session('status2')}}</span>
             <a href="/org/edit/{{session('eId2')}}">Edit</a>
             <a href="/org/delete/{{session('eId2')}}">Delete</a>

@@ -60,8 +60,10 @@ class orgMycampaign extends Controller
     }
 
     public function delete($eventId){
+        
             // echo $eventId;
             // $res=orgCampaign::where('eventId',$eventId)->delete();
+
             $orgC=orgCampaign::find($eventId);
             $orgC->status=0;
             $orgC->save();
