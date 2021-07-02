@@ -11,7 +11,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/man_dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/man_feedback.css') }}">
     <title>Welcome</title>
 </head>
 
@@ -85,30 +85,46 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
-    @foreach ($events as $event)
 
-        <div class="card">
-            <p class="title">
-                {{ $event['title'] }}
-            </p>
-            <img src="{{ $event['image'] }}">
-            <p>
 
-                Starting Date :{{ $event['startDate'] }}
-            </p>
-            <p>
+    <form method="POST" class="ds-form">
+        <table>
+            <tr>
+                <td>User Number:</td>
+                <td>
+                    <input type="text" name="userId">
+                    <span style="color: red" class="error-msg">@error('userId'){{ $message }}@enderror</span>
+                    </td>
 
-                Ending Date ::{{ $event['endDate'] }}
-            </p>
+                </tr>
+                <tr>
+                    <td>Event Name:</td>
+                    <td><input type="text" name="eventId">
+                        <span style="color: red" class="error-msg">@error('eventname'){{ $message }}@enderror</span>
+                        </td>
 
-            <div class="card-text">
-                {{ $event['description'] }}
-            </div>
+                    </tr>
+                    <tr>
+                        <td>Comment:</td>
+                        <td><input type="text" name="message">
+                            <span style="color: red" class="error-msg">@error('description'){{ $message }}@enderror</span>
+                            </td>
 
-            <a href="/man_eventreport">Go to Task</a>
-        </div>
+                        </tr>
+                        <tr>
+                            <td>Date:</td>
+                            <td><input type="date" name="date">
+                                <span style="color: red" class="error-msg">@error('date'){{ $message }}@enderror</span>
+                                </td>
 
-    @endforeach
-</body>
+                            </tr>
 
-</html>
+
+                            <tr>
+                                <td></td>
+                                <td><input type="submit" value="Comment"></td>
+                            </tr>
+                        </table>
+                </body>
+
+                </html>

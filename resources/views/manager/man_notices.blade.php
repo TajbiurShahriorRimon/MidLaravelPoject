@@ -121,7 +121,7 @@
 
                             <tr>
                                 <td></td>
-                                <td><input type="submit" value="Search"></td>
+                                <td><input type="submit" value="Upload"></td>
                             </tr>
                         </table>
                 </body>
