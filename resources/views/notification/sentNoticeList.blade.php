@@ -14,14 +14,7 @@
 <body>
 @include('user.admin.index') <br>
 
-@if(session()->has('noticeSentMsg'))
-    <div class="alert alert-success">
-        {{ session()->get('noticeSentMsg') }}
-    </div>
-@endif
-
 <div align="right">
-    <a href="/notices/checkSentNotices" class="btn btn-danger">Sent Notices</a> &nbsp;
     <a href="/admin/createNotice" class="btn btn-success">+Create New Notice</a>
 </div>
 <div align="center">
@@ -34,7 +27,12 @@
             </tr>
             <tr>
                 <td>
-                    <label style="color: #5cab23">Email: </label><strong>{{$notice['email']}}</strong>
+                    <label style="color: #5cab23">To: </label><strong>{{$notice['email']}}</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label style="color: #5cab23"> </label><strong>{{$notice['userName']}}</strong>
                 </td>
             </tr>
             <tr>
@@ -42,16 +40,9 @@
                     <label style="color: #5cab23">Date: </label><strong>{{$notice['date']}}</strong>
                 </td>
             </tr>
-            @if($notice['status'] == 0)
-                <tr>
-                    <td>
-                        <strong style="color: red">Unread</strong>
-                    </td>
-                </tr>
-            @endif
             <tr>
                 <td>
-                    <a href="/admin/readNotice/{{$notice['notificationId']}}" class="btn btn-primary">Check</a>
+                    <a href="/notice/readSentNotices/{{$notice['notificationId']}}" class="btn btn-primary">Read</a>
                 </td>
             </tr>
         </table>
