@@ -36,7 +36,7 @@ Route::group(['middleware'=>['sess']], function() {
     Route::get('/nonDonorList', [DonationController::class, 'nonDonorList']);
     Route::get('/nonOrganizerList', [OrganizerController::class, 'nonOrganizerList']);
     Route::get('/topOrganizer', [OrganizerController::class, 'topOrganizerDetails']);
-    Route::get('/userHomePage/events', [EventController::class, 'index']);
+    Route::get('/userHomePage/events', [EventController::class, 'index']); //Home page for admin
     Route::post('/userHomePage/events', [EventController::class, 'searchActiveEvents']);
     Route::get('/events/eventRequest', [EventController::class, 'eventRequest']);
     Route::get('/eventRequest/approveForm/{id}', [EventController::class, 'approveForm']);
@@ -50,6 +50,15 @@ Route::group(['middleware'=>['sess']], function() {
     Route::get('/admin/readNotice/{id}', [NotificationController::class, 'adminReadNotice']);
     Route::get('/admin/logout', [LogoutController::class, 'index']);
     Route::get('/events/removePendingEvent/{id}', [EventController::class, 'removePendingEvent']);
+    Route::get('/events/archivedEvents', [EventController::class, 'archivedEvents']);
+    Route::get('/event/information/{id}', [EventController::class, 'eventInformation']);
+    Route::post('/event/information/{id}', [EventController::class, 'changeManagerForEvent']);
+    Route::get('/event/chooseManagerForUpdate/{id}', [EventController::class, 'chooseManagerForEventUpdate']);
+    Route::post('/event/chooseManagerForUpdate/{id}', [EventController::class, 'changeManagerForEvent']);
+    Route::get('/admin/createNotice', [NotificationController::class, 'adminCreateNotice']);
+    Route::post('/admin/createNotice', [NotificationController::class, 'adminSendNotice']);
+    Route::get('/event/detailReviews/{id}', [EventController::class, 'detailReviews']);
+    Route::get('/event/removeComment/{id}/{eventId}', [EventController::class, 'removeEventComment']);
 });
 
 
@@ -94,3 +103,39 @@ Route::group(['middleware'=>['sess']], function(){
 
     Route::get('/org/logout', 'orgLogout@index');
 });
+Route::group(['middleware'=>['Msess']], function(){
+    Route::get('/man_dashboard', 'ManeventmanageController@Dashboard');
+    Route::get('/man_dashboarddata', 'ManeventmanageController@Dashboard');
+    Route::get('/man_Profile', 'manDashboardController@Profile');
+    Route::get('/man_eventslist', 'ManeventmanageController@show');
+    Route::get('/man_donorlist', 'UserController@donorlist');
+
+    Route::get('/man_donorsearch', 'UserController@donorindex');
+    Route::post('/man_donorsearch', 'UserController@donorsearch');
+
+    Route::get('/man_orglist', 'UserController@orglist');
+    Route::get('/man_orgsearch', 'UserController@orgindex');
+    Route::post('/man_orgsearch', 'UserController@orgsearch');
+
+    Route::get('/man_notices', 'NoticesController@index');
+    Route::post('/man_notices', 'NoticesController@store');
+
+    Route::get('/man_feedback', 'CommentController@index');
+    Route::post('/man_feedback', 'CommentController@store');
+
+    Route::get('/monthly_calc', 'TransactionController@index');
+    Route::get('/man_monthlycalcupdate/{id}', 'TransactionController@edit');
+    Route::post('/man_monthlycalcupdate/{id}', 'TransactionController@update');
+
+    Route::get('/yearly_calc', 'TransactionController@index2');
+    Route::get('/man_yearlycalcupdate/{id}', 'TransactionController@edit2');
+    Route::post('/man_yearlycalcupdate/{id}', 'TransactionController@update2');
+
+    Route::get('/man_eventdone', 'ManeventmanageController@eventsinfo');
+    Route::get('/event_details/{id}', 'ManeventmanageController@details')->name('manager.details');
+    Route::get('/man_updateprof', 'UserController@editpage');
+    Route::post('/man_updateprof', 'UserController@Updateprof');
+    Route::get('/man_eventreport', 'UserController@eventreport');
+    Route::post('/man_eventreport', 'ManeventmanageController@eventreport');
+});
+
