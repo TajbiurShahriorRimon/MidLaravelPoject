@@ -59,6 +59,8 @@ Route::group(['middleware'=>['sess']], function() {
     Route::post('/admin/createNotice', [NotificationController::class, 'adminSendNotice']);
     Route::get('/event/detailReviews/{id}', [EventController::class, 'detailReviews']);
     Route::get('/event/removeComment/{id}/{eventId}', [EventController::class, 'removeEventComment']);
+    Route::get('/notices/checkSentNotices', [NotificationController::class, 'checkSentNotices']);
+    Route::get('/notice/readSentNotices/{id}', [NotificationController::class, 'readSentNotice']);
 });
 
 
