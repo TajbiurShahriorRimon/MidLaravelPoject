@@ -31,7 +31,7 @@
         </div>
         <br>
             <span>{{session('status')}}</span>
-            <a href="/create">Edit</a>
+            <a href="/org/edit/{{session('eId')}}">Edit</a>
             <a href="/org/delete/{{session('eId')}}">Delete</a>
     </div>
 
@@ -53,33 +53,36 @@
         <div class="card-text">
             {{session('desc2')}}
         </div>
-        
-            <a href="/create">Edit</a>
+            <span>{{session('status2')}}</span>
+            <a href="/org/edit/{{session('eId2')}}">Edit</a>
             <a href="/org/delete/{{session('eId2')}}">Delete</a>
     </div>
 
 
     <div class="card">
-        <img src="{{asset('asset/banner/campaign/1.jpg')}}" alt="">
+        <img src="{{asset(session('eImg3'))}}" alt="">
         <p class="title">
-            Campaign Title
+           {{session('title3')}}
         </p>
         <p>
-            Campaign Start : 25 May, 2021 <br>
-            Campaign End : 28 June, 2021
+            Campaign Start : {{session('sDate3')}} <br>
+            Campaign End : {{session('eDate3')}}
         </p>
         <hr>
         <p class="status">
-            <span>Donor : 0</span>  | <span> Raised : 0</span>  |  <span>Goal : $2000</span>
+            <span>Donor : 0</span>  | <span> Raised : ${{session('raised3')}}</span>  |  <span>Goal : ${{session('rg3')}}</span>
         </p>
         <hr>
         <div class="card-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            {{session('desc3')}}
         </div>
-        
-            <a href="#">Edit</a>
-            <a href="">Delete</a>
+            <span>{{session('status3')}}</span>
+            <a href="/org/edit/{{session('eId3')}}">Edit</a>
+            <a href="/org/delete/{{session('eId3')}}">Delete</a>
     </div>
+
+    
+
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>

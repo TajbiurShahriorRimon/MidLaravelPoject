@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Non Donors</title>
+    <title>Organizer</title>
 </head>
 <body>
 @include('user.admin.index') <br>
@@ -17,20 +17,18 @@
     <table class="table">
         <thead>
         <tr>
-            <td align="center"><strong>Id</strong></td>
-            <td align="center"><strong>User Name</strong></td>
-            <td align="center"><strong>User Email</strong></td>
-            <td align="left"></td>
+            <td align="center"><strong>Year</strong></td>
+            <td align="center"><strong>Total Raised Donation</strong></td>
+            {{--<td align="left"></td>--}}
         </tr>
         </thead>
 
         <tbody>
-        @foreach($users as $data)
+        @foreach($report as $data)
             <tr style="background-color: #c6cddd">
-                <td align="center">{{$data['userId']}}</td>
-                <td align="center">{{$data['userName']}}</td>
-                <td align="center">{{$data['email']}}</td>
-                <td align="center"><a href="/user/profile/{{$data['userId']}}" class="btn btn-success">Check Profile</a></td>
+                <td align="center">{{$data['date']}}</td>
+                <td align="center">{{$data['totalAmount']}}</td>
+                {{--<td align="center"><a href="/organizerReport/yearly/{{$data['userId']}}" class="btn btn-success">Yearly Report</a></td>--}}
             </tr>
         @endforeach
         </tbody>

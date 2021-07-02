@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Top Donor</title>
+    <title>Brief Details</title>
 </head>
 <body>
 @include('user.admin.index') <br>
@@ -20,40 +20,15 @@
         {{--Without this foreach loop there was a runtime erro
         Exactly Dont know why this happened. However, this loop will only interate one time
         --}}
-        @foreach($users as $user)
+        @foreach($events as $event)
         <tr>
-            <td><strong>User Id</strong></td>
-            <td>{{$user['userId']}}</td>
-        </tr>
-        <tr>
-            <td><strong>Name</strong></td>
-            <td>{{$user['userName']}}</td>
+            <td><strong>No. of Donors</strong></td>
+            <td align="left">{{$event['totalDonors']}}</td>
         </tr>
         <tr>
-            <td><strong>Email</strong></td>
-            <td>{{$user['email']}}</td>
+            <td><strong>Total Raised Amount</strong></td>
+            <td align="left">{{$event['totalRaisedAmount']}}</td>
         </tr>
-        <tr>
-            <td><strong>Raised Amount</strong></td>
-            <td>{{$user['raisedAmount']}}</td>
-        </tr>
-        <tr>
-            <td><strong>Type</strong></td>
-            <td>{{$user['type']}}</td>
-        </tr>
-        @if($user['status'] == 1)
-        <tr class="success">
-            <td><strong>Status</strong></td>
-            <td>Active &nbsp;&nbsp;
-            </td>
-        </tr>
-        @else
-        <tr class="success">
-            <td>Status</td>
-            <td>Inactive &nbsp;&nbsp;
-            </td>
-        </tr>
-        @endif
         @endforeach
         </tbody>
     </table>

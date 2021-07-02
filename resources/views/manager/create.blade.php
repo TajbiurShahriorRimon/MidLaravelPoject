@@ -57,6 +57,7 @@
 
 </head>
 <body>
+@include('user.admin.index') <br>
 <form action="/addManager" method="post">
     <div align="center">
         <h1>Register</h1>

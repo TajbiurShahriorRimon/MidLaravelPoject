@@ -12,6 +12,7 @@
     <title>Non Donors</title>
 </head>
 <body>
+@include('user.admin.index') <br>
 <div align="center">
     <a href="/topOrganizer"><strong>Top Organizer Details</strong></a>
     <h2>Non Donor List</h2>

@@ -9,30 +9,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Non Donors</title>
+    <title>Document</title>
 </head>
 <body>
 @include('user.admin.index') <br>
+<div align="center">Transaction Report</div>
 <div class="container">
+    <h2>Yearly Report</h2>
     <table class="table">
         <thead>
         <tr>
-            <td align="center"><strong>Id</strong></td>
-            <td align="center"><strong>User Name</strong></td>
-            <td align="center"><strong>User Email</strong></td>
-            <td align="left"></td>
+            <th>Date</th>
+            <th>Organizer</th>
+            <th>Event Title</th>
+            <th>Commission</th>
+            <th>Amount</th>
         </tr>
         </thead>
 
         <tbody>
-        @foreach($users as $data)
-            <tr style="background-color: #c6cddd">
-                <td align="center">{{$data['userId']}}</td>
-                <td align="center">{{$data['userName']}}</td>
-                <td align="center">{{$data['email']}}</td>
-                <td align="center"><a href="/user/profile/{{$data['userId']}}" class="btn btn-success">Check Profile</a></td>
-            </tr>
-        @endforeach
+            @foreach($result as $details)
+                <tr>
+                    <td class="info">{{$details['date']}}</td>
+                    <td class="danger">{{$details['userName']}}</td>
+                    <td class="success">{{$details['title']}}</td>
+                    <td class="warning">{{$details['commissionAmount']}}</td>
+                    <td class="active">{{$details['totalAmount']}}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

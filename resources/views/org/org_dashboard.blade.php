@@ -13,135 +13,32 @@
     @include('org.navbar')
         
     <!--! campaign card -->
-
+    @foreach ($eventList as $event)
+    @if ($event->status!=-1)
     <div class="card">
-        <img src="asset/banner/campaign/1.jpg" alt="">
+        <img src="{{$event->image}}" alt="">
         <p class="title">
-            Campaign Title
+            {{$event->title}}
         </p>
         <p>
-            Campaign Start : 25 May, 2021 <br>
-            Campaign End : 28 June, 2021
+            Campaign Start :  {{$event->startDate}} <br>
+            Campaign End :  {{$event->endDate}}
         </p>
+        <br>
+        <span>Manager Id : {{$event->managerId}}</span>
         <hr>
         <p class="status">
-            <span>Donor : 0</span>  | <span> Raised : 0</span>  |  <span>Goal : $2000</span>
+            <span>Donor : 0</span>  | <span> Raised :  {{$event->raisedAmount}}</span>  |  <span>Goal : {{$event->targetAmount}}</span>
         </p>
         <hr>
         <div class="card-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            {{$event->description}}
         </div>
         
-            <a href="/campaignDetails">Donate Now</a>
+            <a href="/campaignDetails/{{$event->eventId}}">Donate Now</a>
     </div>
-
-    <div class="card">
-        <img src="asset/banner/campaign/1.jpg" alt="">
-        <p class="title">
-            Campaign Title
-        </p>
-        <p>
-            Campaign Start : 25 May, 2021 <br>
-            Campaign End : 28 June, 2021
-        </p>
-        <hr>
-        <p class="status">
-            <span>Donor : 0</span>  | <span> Raised : 0</span>  |  <span>Goal : $2000</span>
-        </p>
-        <hr>
-        <div class="card-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </div>
-        
-            <a href="/campaignDetails">Donate Now</a>
-    </div>
-
-    <div class="card">
-        <img src="asset/banner/campaign/1.jpg" alt="">
-        <p class="title">
-            Campaign Title
-        </p>
-        <p>
-            Campaign Start : 25 May, 2021 <br>
-            Campaign End : 28 June, 2021
-        </p>
-        <hr>
-        <p class="status">
-            <span>Donor : 0</span>  | <span> Raised : 0</span>  |  <span>Goal : $2000</span>
-        </p>
-        <hr>
-        <div class="card-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </div>
-        
-            <a href="#">Donate Now</a>
-    </div>
-
-    <div class="card">
-        <img src="asset/banner/campaign/1.jpg" alt="">
-        <p class="title">
-            Campaign Title
-        </p>
-        <p>
-            Campaign Start : 25 May, 2021 <br>
-            Campaign End : 28 June, 2021
-        </p>
-        <hr>
-        <p class="status">
-            <span>Donor : 0</span>  | <span> Raised : 0</span>  |  <span>Goal : $2000</span>
-        </p>
-        <hr>
-        <div class="card-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </div>
-        
-            <a href="#">Donate Now</a>
-    </div>
-
-    <div class="card">
-        <img src="asset/banner/campaign/1.jpg" alt="">
-        <p class="title">
-            Campaign Title
-        </p>
-        <p>
-            Campaign Start : 25 May, 2021 <br>
-            Campaign End : 28 June, 2021
-        </p>
-        <hr>
-        <p class="status">
-            <span>Donor : 0</span>  | <span> Raised : 0</span>  |  <span>Goal : $2000</span>
-        </p>
-        <hr>
-        <div class="card-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </div>
-        
-            <a href="#">Donate Now</a>
-    </div>
-
-    <div class="card">
-        <img src="asset/banner/campaign/1.jpg" alt="">
-        <p class="title">
-            Campaign Title
-        </p>
-        <p>
-            Campaign Start : 25 May, 2021 <br>
-            Campaign End : 28 June, 2021
-        </p>
-        <hr>
-        <p class="status">
-            <span>Donor : 0</span>  | <span> Raised : 0</span>  |  <span>Goal : $2000</span>
-        </p>
-        <hr>
-        <div class="card-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </div>
-        
-            <a href="/campaignDetails">Donate Now</a>
-    </div>
-    
-
-
+    @endif
+    @endforeach
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>

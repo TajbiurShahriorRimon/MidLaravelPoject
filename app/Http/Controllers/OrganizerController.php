@@ -19,7 +19,7 @@ class OrganizerController extends Controller
 
     public function nonOrganizerList(){
         $result = DB::select("SELECT userId, userName, email FROM users
-                                    WHERE userId NOT IN (SELECT userId FROM EVENTS)
+                                    WHERE userId NOT IN (SELECT userId FROM EVENTS where status <> -1)
                                     AND type = 'user'");
 
         $data = json_decode(json_encode($result), true);
@@ -35,6 +35,24 @@ class OrganizerController extends Controller
 
         $data = json_decode(json_encode($result), true);
         return view('organizer.topOrganizerDetails')->with('users', $data);
+    }
+
+    public function organizerNumOfEvents(){
+        $result = DB::select("SELECT COUNT(eventId) as numOfEvents, users.userId, email, userName
+                                    FROM events, users WHERE events.status <> -1
+                                    AND users.userId = events.userId GROUP by userId");
+
+        $data = json_decode(json_encode($result), true);
+        return view('organizer.numOfEvents')->with('users', $data);
+    }
+
+    public function organizerYearEventReport($id){
+        $result = DB::select("SELECT sum(Amount) as totalAmount, Year(date) as date from eventdonations, events
+                                    WHERE events.eventId = eventdonations.eventId
+                                    and events.userId = $id GROUP BY year(date)");
+
+        $data = json_decode(json_encode($result), true);
+        return view('organizer.organizerYearlyReport')->with('report', $data);
     }
 
     /**

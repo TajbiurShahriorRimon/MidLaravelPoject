@@ -108,3 +108,19 @@ p{
     color: #5231BC;
     border: 2px solid #5231BC
 }
+
+.comment-section{
+    text-align: left;
+    font-size: 18pt;
+    background-color: white;
+    width: 600px;
+    margin-left: 370px;
+    padding-bottom: 200px;
+    margin-bottom: 100px;
+    color: rgb(85, 85, 85);
+}
+
+.cmText{
+    margin-left: 100px;
+    font-size: 14pt;
+}

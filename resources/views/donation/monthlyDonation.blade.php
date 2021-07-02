@@ -8,10 +8,38 @@
 
     <script type="text/javascript" src="../../js/jQuery/jquery-3.6.0.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-<script>
+@include('user.admin.index') <br>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <td align="center"><strong>Month</strong></td>
+            <td align="center"><strong>Total Donation Amount</strong></td>
+            {{--<td align="left"></td>--}}
+        </tr>
+        </thead>
+
+        <tbody>
+        @foreach($row as $data)
+            <tr style="background-color: #ece7e9">
+                <td align="center">{{$data['date']}}</td>
+                <td align="center">{{$data['totalAmount']}}</td>
+                {{--<td align="left">
+                    <a href="/donationReport/monthly/{{$data['date']}}" class="btn btn-danger">Monthly Report</a>
+                </td>--}}
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+</div>
+{{--<script>
     $(document).ready(function () {
         //the following variable will be assigned the whole url string
         //var urlString = window.location;
@@ -41,6 +69,6 @@
             chart.data[0].set("dataPoints", data);
         });
     })
-</script>
+</script>--}}
 </body>
 </html>
