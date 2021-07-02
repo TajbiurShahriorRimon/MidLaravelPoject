@@ -20,7 +20,7 @@
         <img src="/{{$data->image}}" alt="event_image">
         <div class="container2">
             <span>{{$data->title}}</span> <br>
-            <span>Donor : 0</span>  | <span> Raised : {{$data->raisedAmount}}</span>  |  <span>Goal : {{$data->targetAmount}}</span>
+            <span>Donor : <a href="/donorlist/{{$data->eventId}}">{{$donorNo->count()}}</a></span>  | <span> Raised : {{$data->raisedAmount}}</span>  |  <span>Goal : {{$data->targetAmount}}</span>
         </div>
         <br>
         <p>
