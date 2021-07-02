@@ -42,12 +42,19 @@
     </div>
 @endif
 
+@if(session()->has('managerChangeForEventMsg'))
+    <div class="alert alert-success">
+        {{ session()->get('managerChangeForEventMsg') }}
+    </div>
+@endif
+
 <div align="center">
     @foreach($events as $event)
         <table align="center">
             <tr>
                 <td>
-                    <img src="https://image.shutterstock.com/image-photo/creative-ideas-bring-money-white-260nw-1610211523.jpg" alt="" height="200" width="300">
+                    {{--<img src="https://image.shutterstock.com/image-photo/creative-ideas-bring-money-white-260nw-1610211523.jpg" alt="" height="200" width="300">--}}
+                    <img src="{{asset($event['image'])}}" alt="" height="200" width="300">
                 </td>
             </tr>
             <tr>
@@ -69,6 +76,7 @@
             <tr>
                 <td>
                     <a href="/event/removeActiveEvent/{{$event['eventId']}}" style="color: lightskyblue" class="btn btn-danger">Remove Event</a>
+                    <a href="/event/information/{{$event['eventId']}}" style="color: lightskyblue" class="btn btn-primary">Information</a>
                 </td>
             </tr>
         </table>

@@ -28,7 +28,8 @@ class createCampaign extends FormRequest
             'sDate'=>'required',
             'eDate'=>'required',
             'rg'=>'required',
-            'desc'=>'required'
+            'desc'=>'required',
+            'img'=> 'image'
         ];
     }
 }

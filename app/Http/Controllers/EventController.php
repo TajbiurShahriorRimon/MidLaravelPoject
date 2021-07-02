@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequest;
+use App\Models\Events;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -46,7 +48,7 @@ class EventController extends Controller
         return view('event.requestApproval', compact('events', 'managers'));
     }
 
-    public function confirmCreateEvent($id, Request $request){
+    public function confirmCreateEvent($id, EventRequest $request){
         $todayDate = date('Y-m-d');
 
         $convertStartDate = strtotime($request->startDate);
@@ -59,8 +61,13 @@ class EventController extends Controller
                                 ". Start date: ".$request->startDate.". End Date: ".$request->endDate;
 
         DB::update("update events set managerId = $request->managerUserId,
-                                    startDate = $request->startDate, endDate = $request->endDate,
+                                    startDate = $convertStartDate, endDate = $convertEndDate,
                                     commission = $request->commission, status = 1 where eventId = $id");
+
+        $event = Events::find($id);
+        $event->startDate=$request->startDate;
+        $event->endDate=$request->endDate;
+        $event->save();
 
         $organizer = DB::select("select * from events where eventId = $id");
         $organizerInfo = json_decode(json_encode($organizer), true);
@@ -88,9 +95,6 @@ class EventController extends Controller
                           values ('$notificationId', '$organizerId', '$notificationReceiverStatus')");
 
         return redirect('/events/eventRequest')->with('eventAcceptMessage', "Event Created Successfully");
-
-        //return $newFormat;
-        //print_r($adminInfo);
     }
 
     public function eventBriefDetails($id){
@@ -98,7 +102,13 @@ class EventController extends Controller
                                     FROM eventdonations WHERE eventId = $id");
 
         $data = json_decode(json_encode($result), true);
-        return view('event.briefReport')->with('events', $data);
+
+        $info = DB::select("SELECT users.email, users.userId, userName, events.title, events.startDate, events.endDate
+                                    FROM events, users WHERE users.userId = events.eventId AND eventId = $id");
+        $data2 = json_decode(json_encode($info), true);
+
+        return view('event.briefReport')->with('events', $data)
+                                            ->with('information', $data2);
     }
 
     public function showEventForRemove($id)
@@ -132,6 +142,70 @@ class EventController extends Controller
         DB::select("Delete from events where eventId = $id");
 
         return redirect('/events/eventRequest')->with('removePendingEventMsg', "Successfully removed pending Event");
+    }
+
+    public function archivedEvents()
+    {
+        $result = DB::select("select * from events where status = 0");
+
+        $data = json_decode(json_encode($result), true);
+
+        return view('event.archivedEvents')->with('events', $data);
+    }
+
+    public function eventInformation($id){
+        $result = DB::select("SELECT * FROM events WHERE eventId = $id");
+
+        $managerResult = DB::select("SELECT * FROM users where type = 'manager' and status = 1");
+        $managers = json_decode(json_encode($managerResult), true);
+
+        $events = json_decode(json_encode($result), true);
+
+        $managerEventInfo = DB::select("SELECT users.userName, users.status, events.managerId FROM users, events
+                                                WHERE users.userId = events.managerId
+                                                AND users.type = 'manager' AND eventId = $id");
+        $managerEvent = json_decode(json_encode($managerEventInfo), true);
+        foreach ($managerEvent as $managerStatus){}
+
+        $statusOfManager = $managerStatus['status'];
+        return view('event.information', compact('events', 'managers', 'statusOfManager'));
+    }
+
+    public function chooseManagerForEventUpdate($id){
+        $result = DB::select("SELECT * FROM events WHERE eventId = $id");
+
+        $managerResult = DB::select("SELECT * FROM users where type = 'manager' and status = 1");
+        $managers = json_decode(json_encode($managerResult), true);
+
+        $events = json_decode(json_encode($result), true);
+        return view('event.managerForEventUpdate', compact('events', 'managers'));
+    }
+
+    public function changeManagerForEvent(Request $request, $id){
+        $event = Events::find($id);
+        $event->managerId=$request->managerUserId;
+        $event->save();
+
+        //return $request->managerUserId;
+        return redirect('/userHomePage/events')->with('managerChangeForEventMsg', "Manager Changed Successfully for Event!");
+    }
+
+    public function detailReviews($id)
+    {
+        $result = DB::select("SELECT users.email, users.userName, comments.description, commentId, comments.date, comments.eventId
+                                    FROM comments, users WHERE eventId = $id
+                                    AND comments.userId = users.userId");
+
+        $data = json_decode(json_encode($result), true);
+
+        return view('event.detailReviews')->with('events', $data);
+    }
+
+    public function removeEventComment($id, $eventId)
+    {
+        DB::select("Delete from comments where commentId = $id");
+
+        return redirect('/event/detailReviews/'.$eventId)->with('removeEventCommentMsg', "Successfully removed Event Comment");
     }
 
     /**
