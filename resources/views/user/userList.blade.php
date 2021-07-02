@@ -12,6 +12,8 @@
     <title>User List</title>
 </head>
 <body>
+@include('user.admin.index') <br>
+
 {{--Following line, If a manager account is create then in the user list
 this messange will be show. Howerver if only this page is request by not createing
 a manager account then the message will not be show--}}

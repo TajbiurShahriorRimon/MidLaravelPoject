@@ -38,11 +38,11 @@
             <input type="text" name="phone" id="" placeholder="Phone" value="{{old('phone')}}"> <br>
             <div class="error-msg">@error('phone'){{$message}}@enderror</div>
 
-            <input type="password" name="pass" id="" placeholder="Password" value="{{old('pass')}}"><br>
-            <div class="error-msg">@error('pass'){{$message}}@enderror</div>
+            <input type="password" name="password" id="" placeholder="Password" value="{{old('pass')}}"><br>
+            <div class="error-msg">@error('password'){{$message}}@enderror</div>
 
-            <input type="password" name="cpass" id="" placeholder="Confirm Password" value="{{old('cpass')}}"> <br>
-            <div class="error-msg">@error('cpass'){{$message}}@enderror</div>
+            <input type="password" name="password_confirmation" id="" placeholder="Confirm Password" value="{{old('cpass')}}"> <br>
+            <div class="error-msg">@error('password_confirmation'){{$message}}@enderror</div>
 
             <input type="submit" name="submit" value="Signup">
          </form>
@@ -52,6 +52,10 @@
                 {{$error}} <br>
             @endforeach
         </div> --}}
+
+        <div class="error-msg error">
+            {{session('msgSign')}}
+        </div>
 
          <div class="footer">
              Already have an account ? <a href="/login"> Sign In</a>

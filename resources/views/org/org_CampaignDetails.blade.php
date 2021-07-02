@@ -49,6 +49,11 @@
     <br>
     <br>
     <div class="comment-section">
+
+        @if(session('type') == 'admin')
+            <a href="/event/detailReviews/{{$data->eventId}}">Check Reviews in Details</a>
+        @endif
+
         <center><b>!--Comments--!</b></center>
         <br>
             @foreach ($cmt as $item)
