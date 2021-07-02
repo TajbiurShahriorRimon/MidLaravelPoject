@@ -58,6 +58,7 @@
 </head>
 <body>
 @include('user.admin.index') <br>
+
 <form action="/addManager" method="post">
     <div align="center">
         <h1>Register</h1>
@@ -82,6 +83,12 @@
         <hr>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="submit" class="registerbtn" value="Register">
+        <br><br>
+        @if(session()->has('emailExistsMsg'))
+            <div class="alert alert-danger">
+                {{ session()->get('emailExistsMsg') }}
+            </div>
+        @endif
     </div>
 </form>
 <div align="center">

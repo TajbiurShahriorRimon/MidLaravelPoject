@@ -105,6 +105,13 @@ class UserController extends Controller
     }
 
     public function addManager(ManagerRequest $request){
+        $email = $request->email;
+        $result = DB::select("select * from users where email = ?", [$email]);
+
+        if(count($result) > 0){
+            return redirect('/addManager')->with('emailExistsMsg', "This email already exists. Create a new and Unique one!");
+        }
+
         DB::insert("INSERT INTO users (userName, email, password, status, type)
                             VALUES ('$request->name', '$request->email', '$request->password', '1', 'manager')");
         return redirect('/userList')->with('message', "Manager Account Created Successfully");

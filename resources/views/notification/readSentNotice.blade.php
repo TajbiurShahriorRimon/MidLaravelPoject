@@ -13,17 +13,6 @@
 </head>
 <body>
 @include('user.admin.index') <br>
-
-@if(session()->has('noticeSentMsg'))
-    <div class="alert alert-success">
-        {{ session()->get('noticeSentMsg') }}
-    </div>
-@endif
-
-<div align="right">
-    <a href="/notices/checkSentNotices" class="btn btn-danger">Sent Notices</a> &nbsp;
-    <a href="/admin/createNotice" class="btn btn-success">+Create New Notice</a>
-</div>
 <div align="center">
     @foreach($notices as $notice)
         <table align="center">
@@ -34,24 +23,22 @@
             </tr>
             <tr>
                 <td>
-                    <label style="color: #5cab23">Email: </label><strong>{{$notice['email']}}</strong>
+                    <h3><strong>Email: </strong>{{$notice['email']}}</h3>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label style="color: #5cab23">Date: </label><strong>{{$notice['date']}}</strong>
+                    <h3><strong>Name: </strong>{{$notice['userName']}}</h3>
                 </td>
             </tr>
-            @if($notice['status'] == 0)
-                <tr>
-                    <td>
-                        <strong style="color: red">Unread</strong>
-                    </td>
-                </tr>
-            @endif
             <tr>
                 <td>
-                    <a href="/admin/readNotice/{{$notice['notificationId']}}" class="btn btn-primary">Check</a>
+                    <label style="color: #237fab">Date: </label><strong>{{$notice['date']}}</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>{{$notice['message']}}</h3>
                 </td>
             </tr>
         </table>
