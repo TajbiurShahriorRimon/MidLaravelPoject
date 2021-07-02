@@ -20,6 +20,7 @@ class orgCampaignTran extends Controller
         $donation = new org_eventDonate();
         $donation->eventId=$eId;
         $donation->Amount=$req->amount;
+        $donation->date=date('d-m-Y-H-i');
         $donation->userId=$req->session()->get('id2');
         //$donation->date = $todayDate;//changes made
         $donation->save();

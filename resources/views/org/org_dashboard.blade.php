@@ -28,7 +28,7 @@
         <span>Manager Id : {{$event->managerId}}</span>
         <hr>
         <p class="status">
-            <span>Donor : 0</span>  | <span> Raised :  {{$event->raisedAmount}}</span>  |  <span>Goal : {{$event->targetAmount}}</span>
+            <span> Raised :  {{$event->raisedAmount}}</span>  |  <span>Goal : {{$event->targetAmount}}</span>
         </p>
         <hr>
         <div class="card-text">

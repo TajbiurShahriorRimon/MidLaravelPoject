@@ -92,6 +92,7 @@ Route::group(['middleware'=>['sess']], function(){
 
 
     Route::get('/campaignDetails/{eId}', 'orgCampaignDetails@index');
+    Route::get('/donorlist/{eId}', 'orgCampaignDetails@donor');
     Route::post('/campaignComment/{eId}', 'orgCampaignComment@insert');
 
     Route::get('/donate/transaction/{eId}', 'orgCampaignTran@index');
