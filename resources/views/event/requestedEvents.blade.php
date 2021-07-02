@@ -49,6 +49,7 @@
                     <a href="/campaignDetails/{{$event['eventId']}}" class="btn btn-info">Check Details</a>
                     <a href="/eventRequest/approveForm/{{$event['eventId']}}" style="color: #2d3439" class="btn btn-success">Approve</a>
                     <a href="/events/removePendingEvent/{{$event['eventId']}}" style="color: lightskyblue" class="btn btn-danger">Remove Event</a>
+                    <a href="/event/smallReport/{{$event['eventId']}}" class="w3-button w3-blue">Check Report</a>
                 </td>
             </tr>
         </table>
