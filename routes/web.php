@@ -126,7 +126,7 @@ Route::group(['middleware'=>['Msess']], function(){
     Route::get('/man_feedback', 'CommentController@index');
     Route::post('/man_feedback', 'CommentController@store');
 
-    Route::get('/monthly_calc', 'TransactionController@index');
+    Route::get('/monthly_calc', 'TransactionController@index3');
     Route::get('/man_monthlycalcupdate/{id}', 'TransactionController@edit');
     Route::post('/man_monthlycalcupdate/{id}', 'TransactionController@update');
 

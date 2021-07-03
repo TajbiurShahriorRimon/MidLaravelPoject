@@ -24,7 +24,7 @@ class ManagerRequest extends FormRequest
     public function rules()
     {
         return [
-            'userName' =>'required|regex:/^[a-zA-Z]/',
+            'name' =>'required|regex:/^[a-zA-Z]/',
             'email'=> 'required|max:50|email',
             'password'=> 'required|string|min:5|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/'
         ];
@@ -32,7 +32,7 @@ class ManagerRequest extends FormRequest
 
     public function messages(){
         return [
-            'userName.required' => 'name required...',
+            'name.required' => 'name required...',
             'email.required' => 'email required...',
             'password.required'=> 'password required ...',
             'password.min:5' => 'password must be minimum 5 characters',
