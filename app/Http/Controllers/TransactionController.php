@@ -17,6 +17,17 @@ class TransactionController extends Controller
     public function index()
     {
         //following line will return a class.
+        $row = DB::select("SELECT transactions.*, events.*,users.userName FROM transactions, events, users
+                                    WHERE transactions.eventId = events.eventId and users.userId = events.userId");
+
+        /*Following line will convert the std class to associative array*/
+        $data = json_decode(json_encode($row), TRUE);
+        return view('transaction.index')->with('result', $data);
+    }
+
+    public function index3()
+    {
+        //following line will return a class.
         $row = DB::select("SELECT * FROM transactions where date>now() - interval 1 month");
 
         /*Following line will convert the std class to associative array*/
