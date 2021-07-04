@@ -27,7 +27,7 @@
                         Name
                     </td>
                     <td class="box">
-                        <input type="text" value="" name="userName" id="">
+                        <input type="text" value="" name="name" id="">
                     </td>
                 </tr>
                 <tr>

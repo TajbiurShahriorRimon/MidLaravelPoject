@@ -168,7 +168,7 @@ class UserController extends Controller
         $userId=$req->session()->get('userId');
         $man=org_users::find($userId);
 
-        $man->userName=$req->userName;
+        $man->userName=$req->name;
         $man->email=$req->email;
         $man->password=$req->password;
 
