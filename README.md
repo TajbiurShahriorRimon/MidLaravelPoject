@@ -1,3 +1,17 @@
+# Advanced Programming In Web Technology Mid Term Project
+## Project: Fundraising for Charity
+
+### Project Type: Web Application
+
+Project Proposal [Project Proposal.docx](https://github.com/TajbiurShahriorRimon/MidLaravelPoject/files/7131685/Project.Proposal.docx)
+
+This project is developed by laravel framework
+
+## In the project report all feartures and its screenshots of interfaces are given
+Project Report [Fundraising_for_Charity Report.pdf](https://github.com/TajbiurShahriorRimon/MidLaravelPoject/files/7131711/Fundraising_for_Charity.Report.pdf)
+
+
+<hr />
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
