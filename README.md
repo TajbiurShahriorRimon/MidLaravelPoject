@@ -7,6 +7,13 @@ Project Proposal [Project Proposal.docx](https://github.com/TajbiurShahriorRimon
 
 This project is developed by laravel framework
 
+  3 Contributors:
+* Rimon: Admin
+* Ehsan: Manager
+* Ishtiyak: User
+
+Details about User Types and their features are given in the project proposal, which is given below
+
 ## In the project report all feartures and its screenshots of interfaces are given
 Project Report [Fundraising_for_Charity Report.pdf](https://github.com/TajbiurShahriorRimon/MidLaravelPoject/files/7131711/Fundraising_for_Charity.Report.pdf)
 
