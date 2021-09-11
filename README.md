@@ -16,6 +16,8 @@ Details about User Types and their features are given in the project proposal, w
 
 ## In the project report all feartures and its screenshots of interfaces are given
 Project Report [Fundraising_for_Charity Report.pdf](https://github.com/TajbiurShahriorRimon/MidLaravelPoject/files/7131711/Fundraising_for_Charity.Report.pdf)
+<br/>
+Unzip and Import the sql file in phpMyAdmin. [mid_laravel_project.zip](https://github.com/TajbiurShahriorRimon/MidLaravelPoject/files/7148127/mid_laravel_project.zip)
 
 
 <hr />
